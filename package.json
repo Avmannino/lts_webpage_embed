@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "GIT_CONFIG_PARAMETERS=\"'filter.lfs.clean=cat' 'filter.lfs.smudge=cat' 'filter.lfs.process=' 'filter.lfs.required=false'\" gh-pages -d dist"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",

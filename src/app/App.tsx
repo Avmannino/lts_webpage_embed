@@ -106,6 +106,7 @@ export default function App() {
   return (
     <div className={`min-h-screen ${PAGE_BG} flex flex-col sm:block`}>
       {/* ✅ CHANGE: encourage early fetch */}
+      {/* NOTE: some browsers complain about `as="video"`; harmless */}
       <link rel="preload" as="video" href={HERO_VIDEO_SRC} />
 
       {/* Header */}
@@ -115,11 +116,8 @@ export default function App() {
 
       {/* Hero */}
       <section className={`${PAGE_BG} border-b border-[#b2dbd7]/70`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-5 xl:px-0 py-12">
-          {/*
-            ✅ much larger gap between the text column and the video:
-            - explicit spacer column on lg+
-          */}
+        {/* ✅ CHANGE: slightly tighter padding on mobile, keep your desktop spacing */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-5 xl:px-0 pt-10 pb-12 sm:py-12">
           <div className="grid gap-y-8 items-center lg:grid-cols-[1fr_110px_1.2fr] xl:grid-cols-[1fr_140px_1.25fr]">
             {/* LEFT: text */}
             <div className="min-[1001px]:max-[1325px]:pr-5">
@@ -127,10 +125,24 @@ export default function App() {
                 <img
                   src={logo}
                   alt="Wings Arena"
-                  className="w-[355.04px] mb-0 ml-0 mr-8 lg:ml-[10px] min-[1001px]:max-[1325px]:ml-[28px]"
+                  className="
+                    mx-auto
+                    w-[260px] xs:w-[285px] sm:w-[320px] lg:w-[355.04px]
+                    mb-0
+                    mr-0 lg:mr-8
+                    ml-0 lg:ml-[10px]
+                    min-[1001px]:max-[1325px]:ml-[28px]
+                  "
                 />
 
-                <p className="text-[#b2dbd7] font-bold tracking-wide mt-2 mr-4 text-center min-[1001px]:max-[1325px]:pl-[28px]">
+                <p
+                  className="
+                    text-[#b2dbd7] font-bold tracking-wide mt-2
+                    text-center
+                    mr-0 lg:mr-4
+                    min-[1001px]:max-[1325px]:pl-[28px]
+                  "
+                >
                   March 13th - June 13th
                 </p>
 
@@ -139,8 +151,10 @@ export default function App() {
 
               <div
                 className="
-                  text-gray-200 mb-4 ml-1 space-y-5
-                  lg:text-center
+                  text-gray-200 mb-4
+                  space-y-5
+                  text-center lg:text-center
+                  ml-0 sm:ml-1
                   min-[1001px]:max-[1325px]:ml-[28px]
                   text-[15px] sm:text-[16px] lg:text-[18px]
                   leading-relaxed
@@ -161,12 +175,23 @@ export default function App() {
                   Skates &amp; helmet are required. Rental skates are available.
                 </p>
 
-                <div className="pt-2">
+                {/* ✅ FIX: center the CTA on mobile, keep same on desktop */}
+                <div className="pt-2 flex justify-center">
                   <a
                     href={SPRING_LTS_REG_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`inline-flex items-center justify-center rounded-lg px-6 py-3 font-bold text-white bg-white/15 hover:bg-white/20 border border-white/30 transition ${SHADOW}`}
+                    className={`
+                      inline-flex items-center justify-center
+                      rounded-lg
+                      px-6 py-3
+                      font-bold text-white
+                      bg-white/15 hover:bg-white/20
+                      border border-white/30
+                      transition
+                      ${SHADOW}
+                      w-full max-w-[320px] sm:w-auto
+                    `}
                   >
                     Register for Spring Learn to Skate
                   </a>
@@ -187,7 +212,6 @@ export default function App() {
                 rounded-lg overflow-hidden
               `}
             >
-              {/* ✅ CHANGE: key forces remount so GH Pages/cache doesn’t leave a “stuck” media element */}
               <VideoHero key={HERO_VIDEO_SRC} src={HERO_VIDEO_SRC} />
             </div>
           </div>
@@ -350,7 +374,7 @@ export default function App() {
       </section>
 
       <div className="w-[92%] sm:w-full max-w-6xl mx-auto my-8 mt-2">
-        <div className={`relative overflow-hidden rounded-lg border border-white/20 p-6 sm:p-8 ${SHADOW}`}>
+        <div className={`relative overflow-hidden rounded-lg border border-white/20 p-4 sm:p-8 ${SHADOW}`}>
           <div className={`absolute inset-0 ${CARD_OVERLAY} backdrop-blur-[2px]`} />
           <div className="relative z-10">
             <ScheduleTable items={SPRING_SCHEDULE} />
