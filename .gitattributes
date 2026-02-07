@@ -1,2 +1,5 @@
-# Don't store mp4 in Git LFS (GH Pages needs real bytes)
-*.mp4 -filter -diff -merge -text
+# Keep LFS for mp4 generally (optional)
+*.mp4 filter=lfs diff=lfs merge=lfs -text
+
+# BUT: GitHub Pages-served videos must NOT be LFS
+public/videos/*.mp4 -filter -diff -merge -text
