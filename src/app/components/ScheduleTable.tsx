@@ -1,7 +1,6 @@
 type ScheduleItem = {
   label: string; // e.g. "Mondays (Preschoolers)"
-  time: string;  // e.g. "1:20 PM – 2:05 PM"
-  price: string; // e.g. "$425"
+  time: string; // e.g. "1:20 PM – 2:05 PM"
   dates: string[]; // e.g. ["Mar 16, 2026", ...]
 };
 
@@ -22,9 +21,6 @@ export function ScheduleTable({ items }: ScheduleTableProps) {
               Time
             </th>
             <th className="text-left p-2 sm:p-3 text-xs sm:text-sm text-white border-b border-white/20">
-              Price
-            </th>
-            <th className="text-left p-2 sm:p-3 text-xs sm:text-sm text-white border-b border-white/20">
               Dates
             </th>
           </tr>
@@ -38,9 +34,6 @@ export function ScheduleTable({ items }: ScheduleTableProps) {
               </td>
               <td className="p-2 sm:p-3 text-xs sm:text-sm text-white whitespace-nowrap">
                 {item.time}
-              </td>
-              <td className="p-2 sm:p-3 text-xs sm:text-sm text-white font-semibold whitespace-nowrap">
-                {item.price}
               </td>
               <td className="p-2 sm:p-3 text-[11px] sm:text-sm text-white/90">
                 <div className="flex flex-wrap gap-x-2 gap-y-1">

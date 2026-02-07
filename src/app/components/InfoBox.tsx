@@ -42,7 +42,7 @@ export function InfoBox({
       ].join(" ")}
     >
       {/* ✅ Background only (text stays 100%) */}
-      <div className="absolute inset-0 bg-[#e51837]/85 backdrop-blur-[2px]" />
+      <div className="absolute inset-0 bg-[#00335e]/85 backdrop-blur-[2px]" />
 
       {/* ✅ Content stays full opacity */}
       <div className="relative z-10 flex flex-col items-center text-center">

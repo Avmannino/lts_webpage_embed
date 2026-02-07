@@ -6,13 +6,6 @@ import logo from "../assets/wingslogo.png";
 // ✅ NEW: Hero video (put your mp4 here)
 import heroVideo from "../assets/hero/learn-to-skate-hero.mp4";
 
-// ✅ Removed: hero images + carousel
-// import heroImage1 from "../assets/hero/hero-1.jpg";
-// import heroImage2 from "../assets/hero/hero-2.jpg";
-// import heroImage3 from "../assets/hero/hero-3.jpg";
-// import heroImage4 from "../assets/hero/hero-4.jpg";
-// import { HeroCarousel } from "@/app/components/HeroCarousel";
-
 import { VideoHero } from "@/app/components/VideoHero";
 import { InfoBox } from "@/app/components/InfoBox";
 import { PriceCard } from "@/app/components/PriceCard";
@@ -35,16 +28,12 @@ export default function App() {
   const SHADOW = "shadow-[0_8px_20px_rgba(0,0,0,0.45)]";
 
   // ✅ Colors (kept from your design)
-  const PAGE_BG = "bg-[#1f419b]";
-  const CARD_OVERLAY = "bg-[#e51837]/85";
+  const PAGE_BG = "bg-[#305774]";
+  const CARD_OVERLAY = "bg-[#00335e]/85";
 
   // ✅ LINKS (from the site)
   const SPRING_LTS_REG_URL =
     "https://tms.ezfacility.com/OnlineRegistrations/Register.aspx?CompanyID=8390&GroupID=3995941";
-
-  // Winter link includes both LTP & LTS on the same registration page
-  const WINTER_LTS_REG_URL =
-    "https://tms.ezfacility.com/OnlineRegistrations/Register.aspx?CompanyID=8390&GroupID=3955044";
 
   // ✅ Spring 2026 schedule (from EZFacility registration page)
   const SPRING_SCHEDULE = [
@@ -107,10 +96,6 @@ export default function App() {
     },
   ] as const;
 
-  // ✅ Winter schedule summary (kept simple — details are on the registration page)
-  const WINTER_NOTE =
-    "Winter session runs Sundays (11/16 – 02/22). On the registration page, choose Learn To Skate ($425).";
-
   return (
     <div className={`min-h-screen ${PAGE_BG} flex flex-col sm:block`}>
       {/* Header */}
@@ -121,27 +106,34 @@ export default function App() {
       {/* Hero */}
       <section className={`${PAGE_BG} border-b border-[#b2dbd7]/70`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-5 xl:px-0 py-12">
-          <div className="grid lg:grid-cols-2 gap-y-8 lg:gap-x-[162px] items-center">
-            <div className="lg:-ml-[60px] min-[1001px]:max-[1325px]:ml-0 min-[1001px]:max-[1325px]:pr-5">
-              <div className="flex flex-col items-center lg:items-center mb-6">
+          {/* ✅ CHANGE: increase spacing between text + video */}
+          <div className="grid lg:grid-cols-[1.15fr_1.25fr] gap-y-8 lg:gap-y-8 lg:gap-x-36 xl:gap-x-44 items-center">
+            {/* ✅ CHANGE: reduce how far the text is pulled left so it isn't closer to the video */}
+            <div className="lg:-ml-[30px] min-[1001px]:max-[1325px]:ml-0 min-[1001px]:max-[1325px]:pr-5">
+              <div className="flex flex-col items-center lg:items-center mb-5">
                 <img
                   src={logo}
                   alt="Wings Arena"
-                  className="w-[65.04px] mt-[-40px] mb-2 ml-2 mr-3 lg:ml-[10px] min-[1001px]:max-[1325px]:ml-[28px]"
+                  className="w-[355.04px] mb-0 ml-0 mr-8 lg:ml-[10px] min-[1001px]:max-[1325px]:ml-[28px]"
                 />
 
-                <h1 className="text-4xl lg:text-4xl text-white text-center lg:text-center min-[1001px]:max-[1325px]:pl-[28px]">
-                  Spring 2026 Learn to Skate
-                </h1>
-
-                <p className="text-[#b2dbd7] font-bold tracking-wide mt-3 text-center min-[1001px]:max-[1325px]:pl-[28px]">
-                  March 13 – June 13, 2026
+                <p className="text-[#b2dbd7] font-bold tracking-wide mt-2 mr-4 text-center min-[1001px]:max-[1325px]:pl-[28px]">
+                  March 13th - June 13th
                 </p>
 
                 <div className="mt-[15px] -mb-[10px] h-px w-full bg-gradient-to-r from-transparent via-[#b2dbd7]/50 to-transparent" />
               </div>
 
-              <div className="text-gray-200 mb-4 ml-1 space-y-5 lg:text-center min-[1001px]:max-[1325px]:ml-[28px] text-[15px] sm:text-[16px] lg:text-[18px] leading-relaxed">
+              <div
+                className="
+                  text-gray-200 mb-4 ml-1 space-y-5
+                  lg:text-center
+                  min-[1001px]:max-[1325px]:ml-[28px]
+                  text-[15px] sm:text-[16px] lg:text-[18px]
+                  leading-relaxed
+                  w-full max-w-none
+                "
+              >
                 <p className="font-semibold text-gray-200">
                   A welcoming intro program for beginners — balance, glides, and safe
                   falls through fun games and guided practice.
@@ -165,30 +157,17 @@ export default function App() {
                   >
                     Register for Spring Learn to Skate
                   </a>
-
-                  <p className="text-white/80 text-sm mt-3">{WINTER_NOTE}</p>
-
-                  <a
-                    href={WINTER_LTS_REG_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block mt-2 text-[#b2dbd7] font-semibold underline underline-offset-4 hover:text-white transition"
-                  >
-                    Winter Registration (Learn to Skate option)
-                  </a>
                 </div>
               </div>
             </div>
 
-            {/* ✅ Hero Video (autoplays muted; user can toggle sound) */}
+            {/* ✅ Hero Video: wider + nudged right */}
             <div
               className={`
-                relative h-64 sm:h-80 lg:h-96
-                ml-[0px] lg:ml-0
-                min-[1001px]:max-[1325px]:h-[320px]
-                min-[1001px]:max-[1325px]:ml-0
-                min-[1001px]:max-[1325px]:scale-[0.93]
-                min-[1001px]:max-[1325px]:origin-top-left
+                relative h-64 sm:h-80 lg:h-[360px]
+                w-full
+                lg:ml-10
+                lg:justify-self-end
                 ${SHADOW}
                 rounded-lg overflow-hidden
               `}
@@ -240,7 +219,7 @@ export default function App() {
                 <InfoBox
                   iconImage={practiceIcon}
                   title="Class Options"
-                  description="Mondays, Fridays, or Saturdays (Spring session)"
+                  description="Mondays (Preschoolers), Fridays, or Saturdays"
                   iconSize="w-[40px] h-[40px]"
                   iconOffset="-mt-[6px]"
                   textOffset="-mt-[3.5px]"
@@ -289,7 +268,7 @@ export default function App() {
           <div className="my-5 h-px w-full bg-gradient-to-r from-transparent via-[#b2dbd7]/50 to-transparent" />
 
           <p className="text-center text-gray-200 mb-6 font-semibold">
-            Spring 2026 registration options
+            Learn To Skate Spring 2026
           </p>
 
           <div className="flex justify-center w-full">
@@ -298,7 +277,7 @@ export default function App() {
                 <PriceCard
                   title="Mondays"
                   price="$425"
-                  description="Spring Learn to Skate"
+                  description="Preschoolers"
                   features={["1:20 PM – 2:05 PM"]}
                 />
               </div>
@@ -326,7 +305,6 @@ export default function App() {
                   title="Fridays & Saturdays"
                   price="$735"
                   description="2-day bundle"
-                  features={["Register for two days"]}
                 />
               </div>
             </div>
@@ -360,17 +338,7 @@ export default function App() {
           <div className={`absolute inset-0 ${CARD_OVERLAY} backdrop-blur-[2px]`} />
           <div className="relative z-10">
             <ScheduleTable items={[...SPRING_SCHEDULE]} />
-
-            <div className="mt-6 text-center">
-              <a
-                href={SPRING_LTS_REG_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block font-bold underline underline-offset-4 text-[#b2dbd7] hover:text-white transition text-lg"
-              >
-                Registration Link
-              </a>
-            </div>
+            <div className="mt-6 text-center" />
           </div>
         </div>
       </div>
@@ -427,16 +395,7 @@ export default function App() {
                   <p>(203) 357-1055</p>
                 </div>
 
-                <div className="mt-6">
-                  <a
-                    href={WINTER_LTS_REG_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block text-white/90 underline underline-offset-4 hover:text-white transition"
-                  >
-                    Winter Registration (choose Learn to Skate)
-                  </a>
-                </div>
+                <div className="mt-6" />
               </div>
             </div>
           </div>
@@ -481,7 +440,7 @@ export default function App() {
                   </AccordionTrigger>
                   <AccordionContent className="text-white">
                     Spring Learn to Skate runs March 13 – June 13, 2026 with options on
-                    Mondays, Fridays, or Saturdays. See the Schedule section above for
+                    Mondays (Preschoolers), Fridays, or Saturdays. See the Schedule section above for
                     exact dates and times.
                   </AccordionContent>
                 </AccordionItem>
@@ -491,7 +450,7 @@ export default function App() {
                     How much does it cost?
                   </AccordionTrigger>
                   <AccordionContent className="text-white">
-                    Spring options are $425 (Mondays) or $490 (Fridays/Saturdays). A
+                    Spring options are $425 (Mondays - Preschool) or $490 (Fridays/Saturdays). A
                     2-day Friday &amp; Saturday bundle is $735.
                   </AccordionContent>
                 </AccordionItem>

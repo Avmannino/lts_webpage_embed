@@ -4,7 +4,7 @@ type PriceCardProps = {
   title: string;
   price: string;
   description?: string;
-  features?: string[];
+  features?: string[]; // rendered as plain lines (no bullets)
   className?: string;
 };
 
@@ -23,7 +23,7 @@ export function PriceCard({
       className={`relative rounded-lg border border-white/20 p-6 h-full overflow-hidden ${className}`}
     >
       {/* ✅ Background only (text stays 100%) */}
-      <div className="absolute inset-0 bg-[#e51837]/85 backdrop-blur-[2px]" />
+      <div className="absolute inset-0 bg-[#00335e]/85 backdrop-blur-[2px]" />
 
       {/* ✅ Content stays full opacity */}
       <div className="relative z-10 flex flex-col items-start text-left h-full">
@@ -50,51 +50,28 @@ export function PriceCard({
             <div className="text-white text-4xl sm:text-4xl font-bold leading-none">
               {price}
             </div>
+
             {description ? (
               <div className="text-gray-200 text-sm mt-2">{description}</div>
             ) : null}
           </div>
         </div>
 
+        {/* ✅ Times moved UP (was mt-6) */}
         {features.length > 0 ? (
-          <ul
+          <div
             className={[
-              "mt-6 space-y-2 text-gray-100 text-sm",
-              // ✅ Desktop default bullets
-              "list-disc list-inside",
-              // ✅ Mobile: remove native marker bullets + center
-              "max-[600px]:list-none max-[600px]:pl-11",
-              // ✅ Tablet centering
+              "mt-3 space-y-1 text-gray-100 text-sm w-full", // <-- moved up + tighter spacing
+              "max-[600px]:text-center",
               "min-[601px]:max-[1000px]:text-center",
-              "min-[601px]:max-[1000px]:list-inside",
             ].join(" ")}
           >
-            {features.map((feature, idx) => (
-              <li
-                key={idx}
-                className={[
-                  "leading-relaxed",
-                  // ✅ Mobile: grid so wrapped lines align under text (not bullet)
-                  "max-[600px]:grid max-[600px]:grid-cols-[14px_1fr] max-[600px]:gap-x-1",
-                  "max-[600px]:items-start max-[600px]:justify-center",
-                  "max-[600px]:w-fit max-[600px]:mx-auto",
-                ].join(" ")}
-              >
-                {/* custom bullet for mobile */}
-                <span
-                  aria-hidden
-                  className="max-[600px]:block max-[600px]:text-center"
-                >
-                  •
-                </span>
-
-                {/* text column */}
-                <span className="max-[600px]:block max-[600px]:text-center">
-                  {feature}
-                </span>
-              </li>
+            {features.map((line, idx) => (
+              <div key={idx} className="leading-relaxed">
+                {line}
+              </div>
             ))}
-          </ul>
+          </div>
         ) : null}
 
         <div className="mt-auto" />
