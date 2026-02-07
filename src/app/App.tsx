@@ -23,9 +23,12 @@ import coachingIcon from "../assets/icons/icons8-coaching-100.png";
 import qrCode from "../assets/Registration_QR.png";
 
 // ✅ IMPORTANT: Use BASE_URL so the video resolves under /lts_webpage_embed/ on GH Pages
-// ✅ CHANGE: add cache-buster to avoid GH Pages / browser serving an old cached mp4
-// Bump v= when you replace/re-encode the video
-const HERO_VIDEO_SRC = `${import.meta.env.BASE_URL}videos/learn-to-skate-hero.mp4?v=3`;
+// ✅ CHANGE: make the URL ABSOLUTE (origin + base) + cache-buster.
+// Bump v= whenever you re-upload/re-encode.
+const HERO_VIDEO_SRC =
+  typeof window !== "undefined"
+    ? `${window.location.origin}${import.meta.env.BASE_URL}videos/learn-to-skate-hero.mp4?v=4`
+    : `${import.meta.env.BASE_URL}videos/learn-to-skate-hero.mp4?v=4`;
 
 export default function App() {
   // ✅ Reusable shadow token
@@ -40,7 +43,6 @@ export default function App() {
     "https://tms.ezfacility.com/OnlineRegistrations/Register.aspx?CompanyID=8390&GroupID=3995941";
 
   // ✅ Spring 2026 schedule (from EZFacility registration page)
-  // ✅ CHANGE: removed `as const` so TS doesn't make dates readonly (fixes deploy build errors)
   const SPRING_SCHEDULE = [
     {
       label: "Mondays (Preschoolers)",
@@ -103,7 +105,7 @@ export default function App() {
 
   return (
     <div className={`min-h-screen ${PAGE_BG} flex flex-col sm:block`}>
-      {/* ✅ CHANGE: hint the browser to start fetching the mp4 ASAP */}
+      {/* ✅ CHANGE: encourage early fetch */}
       <link rel="preload" as="video" href={HERO_VIDEO_SRC} />
 
       {/* Header */}
@@ -185,7 +187,8 @@ export default function App() {
                 rounded-lg overflow-hidden
               `}
             >
-              <VideoHero src={HERO_VIDEO_SRC} />
+              {/* ✅ CHANGE: key forces remount so GH Pages/cache doesn’t leave a “stuck” media element */}
+              <VideoHero key={HERO_VIDEO_SRC} src={HERO_VIDEO_SRC} />
             </div>
           </div>
         </div>
