@@ -1,12 +1,19 @@
 import type React from "react";
 
+// ✅ Branding
 import logo from "../assets/wingslogo.png";
-import heroImage1 from "../assets/hero/hero-1.jpg";
-import heroImage2 from "../assets/hero/hero-2.jpg";
-import heroImage3 from "../assets/hero/hero-3.jpg";
-import heroImage4 from "../assets/hero/hero-4.jpg";
 
-import { HeroCarousel } from "@/app/components/HeroCarousel";
+// ✅ NEW: Hero video (put your mp4 here)
+import heroVideo from "../assets/hero/learn-to-skate-hero.mp4";
+
+// ✅ Removed: hero images + carousel
+// import heroImage1 from "../assets/hero/hero-1.jpg";
+// import heroImage2 from "../assets/hero/hero-2.jpg";
+// import heroImage3 from "../assets/hero/hero-3.jpg";
+// import heroImage4 from "../assets/hero/hero-4.jpg";
+// import { HeroCarousel } from "@/app/components/HeroCarousel";
+
+import { VideoHero } from "@/app/components/VideoHero";
 import { InfoBox } from "@/app/components/InfoBox";
 import { PriceCard } from "@/app/components/PriceCard";
 import { ScheduleTable } from "@/app/components/ScheduleTable";
@@ -24,13 +31,6 @@ import coachingIcon from "../assets/icons/icons8-coaching-100.png";
 import qrCode from "../assets/Registration_QR.png";
 
 export default function App() {
-  const heroImages = [
-    { url: heroImage3, alt: "Wings Arena seating area" },
-    { url: heroImage1, alt: "Wings Arena ice rink facility" },
-    { url: heroImage2, alt: "Wings Arena ice rink view" },
-    { url: heroImage4, alt: "Ice skates" },
-  ];
-
   // ✅ Reusable shadow token
   const SHADOW = "shadow-[0_8px_20px_rgba(0,0,0,0.45)]";
 
@@ -166,9 +166,7 @@ export default function App() {
                     Register for Spring Learn to Skate
                   </a>
 
-                  <p className="text-white/80 text-sm mt-3">
-                    {WINTER_NOTE}
-                  </p>
+                  <p className="text-white/80 text-sm mt-3">{WINTER_NOTE}</p>
 
                   <a
                     href={WINTER_LTS_REG_URL}
@@ -182,7 +180,7 @@ export default function App() {
               </div>
             </div>
 
-            {/* HeroCarousel */}
+            {/* ✅ Hero Video (autoplays muted; user can toggle sound) */}
             <div
               className={`
                 relative h-64 sm:h-80 lg:h-96
@@ -195,7 +193,7 @@ export default function App() {
                 rounded-lg overflow-hidden
               `}
             >
-              <HeroCarousel images={heroImages} interval={3000} />
+              <VideoHero src={heroVideo} />
             </div>
           </div>
         </div>
