@@ -1,2 +1,2 @@
-*.mp4 filter=lfs diff=lfs merge=lfs -text
-src/assets/hero/learn-to-skate-hero.mp4 filter=lfs diff=lfs merge=lfs -text
+# Don't store mp4 in Git LFS (GH Pages needs real bytes)
+*.mp4 -filter -diff -merge -text
