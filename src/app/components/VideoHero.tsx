@@ -30,10 +30,8 @@ export function VideoHero({
     if (!el) return;
 
     try {
-      // Autoplay reliability: muted + playsInline
+      // Autoplay reliability: start muted
       el.muted = true;
-      // @ts-expect-error - TS doesn't always include playsInline
-      el.playsInline = true;
 
       const p = el.play();
       if (p && typeof (p as Promise<void>).then === "function") {
@@ -53,7 +51,7 @@ export function VideoHero({
 
     el.muted = muted;
 
-    // If user unmutes, ensure playback continues (some browsers pause audio changes)
+    // If user unmutes, ensure playback continues (some browsers pause on audio change)
     if (!muted) {
       el.volume = 1;
       el.play().catch(() => {
@@ -63,9 +61,6 @@ export function VideoHero({
   }, [muted]);
 
   useEffect(() => {
-    const el = videoRef.current;
-    if (!el) return;
-
     // Reset any prior errors when src changes
     setError(null);
 
