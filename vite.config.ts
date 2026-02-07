@@ -4,10 +4,9 @@ import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 
 export default defineConfig({
-  // ✅ Required for GitHub Pages project sites:
-  // https://<username>.github.io/<repo>/
+  // ✅ IMPORTANT for GitHub Pages project sites:
+  // https://<user>.github.io/<repo>/
   base: "/lts_webpage_embed/",
-
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {

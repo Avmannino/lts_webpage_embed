@@ -1,8 +1,11 @@
+// src/app/App.tsx
+
 // ✅ Branding
 import logo from "../assets/wingslogo.png";
 
-// ✅ NEW: Hero video (put your mp4 here)
-import heroVideo from "../assets/hero/learn-to-skate-hero.mp4";
+// ✅ Hero video should be served from /public/videos for GH Pages reliability
+// Put the file here: public/videos/learn-to-skate-hero.mp4
+const HERO_VIDEO_SRC = `${import.meta.env.BASE_URL}videos/learn-to-skate-hero.mp4`;
 
 import { VideoHero } from "@/app/components/VideoHero";
 import { InfoBox } from "@/app/components/InfoBox";
@@ -104,10 +107,14 @@ export default function App() {
       {/* Hero */}
       <section className={`${PAGE_BG} border-b border-[#b2dbd7]/70`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-5 xl:px-0 py-12">
-          {/* ✅ CHANGE: increase spacing between text + video */}
-          <div className="grid lg:grid-cols-[1.15fr_1.25fr] gap-y-8 lg:gap-y-8 lg:gap-x-36 xl:gap-x-44 items-center">
-            {/* ✅ CHANGE: reduce how far the text is pulled left so it isn't closer to the video */}
-            <div className="lg:-ml-[30px] min-[1001px]:max-[1325px]:ml-0 min-[1001px]:max-[1325px]:pr-5">
+          {/*
+            ✅ CHANGE: much larger gap between the text column and the video.
+            - Increase column gap a lot on lg/xl
+            - Add an explicit spacer column that only appears on large screens
+          */}
+          <div className="grid gap-y-8 items-center lg:grid-cols-[1fr_110px_1.2fr] xl:grid-cols-[1fr_140px_1.25fr]">
+            {/* LEFT: text */}
+            <div className="min-[1001px]:max-[1325px]:pr-5">
               <div className="flex flex-col items-center lg:items-center mb-5">
                 <img
                   src={logo}
@@ -159,18 +166,20 @@ export default function App() {
               </div>
             </div>
 
-            {/* ✅ Hero Video: wider + nudged right */}
+            {/* ✅ Spacer column (creates guaranteed gap on lg+) */}
+            <div className="hidden lg:block" />
+
+            {/* RIGHT: Hero Video */}
             <div
               className={`
                 relative h-64 sm:h-80 lg:h-[360px]
                 w-full
-                lg:ml-10
                 lg:justify-self-end
                 ${SHADOW}
                 rounded-lg overflow-hidden
               `}
             >
-              <VideoHero src={heroVideo} />
+              <VideoHero src={HERO_VIDEO_SRC} />
             </div>
           </div>
         </div>
