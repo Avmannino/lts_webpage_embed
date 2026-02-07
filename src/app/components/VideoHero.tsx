@@ -4,96 +4,140 @@ type VideoHeroProps = {
   src: string;
   poster?: string;
   className?: string;
+
+  /** Optional: start muted (recommended true for autoplay) */
+  defaultMuted?: boolean;
+
+  /** Optional: show/hide the audio toggle button */
+  showAudioToggle?: boolean;
 };
 
-export function VideoHero({ src, poster, className = "" }: VideoHeroProps) {
+export function VideoHero({
+  src,
+  poster,
+  className = "",
+  defaultMuted = true,
+  showAudioToggle = true,
+}: VideoHeroProps) {
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const [muted, setMuted] = useState(true);
-  const [started, setStarted] = useState(false);
 
-  // Autoplay on load (muted is required by most browsers)
-  useEffect(() => {
-    const v = videoRef.current;
-    if (!v) return;
+  const [muted, setMuted] = useState<boolean>(defaultMuted);
+  const [error, setError] = useState<string | null>(null);
 
-    // ensure autoplay policies are satisfied
-    v.muted = true;
-    v.volume = 1;
+  // Try to start playback (safe to call multiple times)
+  const tryPlay = async () => {
+    const el = videoRef.current;
+    if (!el) return;
 
-    const attemptPlay = async () => {
-      try {
-        await v.play();
-        setStarted(true);
-      } catch {
-        // Autoplay may still fail on some browsers until user interacts.
-        setStarted(false);
+    try {
+      // Autoplay reliability: muted + playsInline
+      el.muted = true;
+      // @ts-expect-error - TS doesn't always include playsInline
+      el.playsInline = true;
+
+      const p = el.play();
+      if (p && typeof (p as Promise<void>).then === "function") {
+        await p;
       }
+      setError(null);
+    } catch {
+      // Autoplay can be blocked; we'll retry on first user gesture.
+      setError("autoplay-blocked");
+    }
+  };
+
+  // Keep the DOM video muted state in sync with our UI state
+  useEffect(() => {
+    const el = videoRef.current;
+    if (!el) return;
+
+    el.muted = muted;
+
+    // If user unmutes, ensure playback continues (some browsers pause audio changes)
+    if (!muted) {
+      el.volume = 1;
+      el.play().catch(() => {
+        // If play fails, user can tap again; we don't hard-fail.
+      });
+    }
+  }, [muted]);
+
+  useEffect(() => {
+    const el = videoRef.current;
+    if (!el) return;
+
+    // Reset any prior errors when src changes
+    setError(null);
+
+    // Ensure we start muted for autoplay
+    setMuted(true);
+
+    // Kick off load + play attempt
+    tryPlay();
+
+    // If autoplay is blocked, try again on the first user gesture
+    const onFirstUserGesture = () => {
+      tryPlay();
+      window.removeEventListener("pointerdown", onFirstUserGesture);
+      window.removeEventListener("touchstart", onFirstUserGesture);
+      window.removeEventListener("keydown", onFirstUserGesture);
     };
 
-    attemptPlay();
-  }, []);
+    window.addEventListener("pointerdown", onFirstUserGesture, { once: true });
+    window.addEventListener("touchstart", onFirstUserGesture, { once: true });
+    window.addEventListener("keydown", onFirstUserGesture, { once: true });
 
-  const toggleMute = () => {
-    const v = videoRef.current;
-    if (!v) return;
-
-    const nextMuted = !muted;
-    v.muted = nextMuted;
-
-    // If unmuting, ensure video is playing (some browsers pause on unmute)
-    if (!nextMuted) {
-      v.play().catch(() => {});
-    }
-
-    setMuted(nextMuted);
-  };
-
-  const clickToPlay = () => {
-    const v = videoRef.current;
-    if (!v) return;
-    v.play().then(() => setStarted(true)).catch(() => setStarted(false));
-  };
+    return () => {
+      window.removeEventListener("pointerdown", onFirstUserGesture);
+      window.removeEventListener("touchstart", onFirstUserGesture);
+      window.removeEventListener("keydown", onFirstUserGesture);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [src]);
 
   return (
-    <div className={["relative h-full w-full", className].join(" ")}>
+    <div className={`relative w-full h-full ${className}`}>
       <video
         ref={videoRef}
+        className="absolute inset-0 w-full h-full object-cover"
         src={src}
         poster={poster}
-        className="absolute inset-0 h-full w-full object-cover"
         autoPlay
         muted
         playsInline
         loop
         preload="auto"
+        controls={false}
+        disablePictureInPicture
+        controlsList="nodownload noplaybackrate noremoteplayback"
+        onError={() => setError("load-or-decode-failed")}
       />
 
-      {/* Bottom gradient for readability like your carousel */}
-      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/45 to-transparent pointer-events-none" />
-
-      {/* If autoplay fails, show a click-to-play overlay */}
-      {!started && (
+      {/* Audio toggle (user-controlled) */}
+      {showAudioToggle ? (
         <button
           type="button"
-          onClick={clickToPlay}
-          className="absolute inset-0 grid place-items-center bg-black/20 text-white font-semibold"
-          aria-label="Play video"
+          onClick={() => setMuted((m) => !m)}
+          className="
+            absolute bottom-3 right-3 z-20
+            rounded-full border border-white/30
+            bg-black/40 backdrop-blur-sm
+            px-4 py-2
+            text-white text-sm font-semibold
+            hover:bg-black/55 transition
+          "
+          aria-label={muted ? "Unmute video" : "Mute video"}
         >
-          <span className="rounded-lg border border-white/40 bg-black/30 px-4 py-2">
-            Tap to Play
-          </span>
+          {muted ? "Unmute" : "Mute"}
         </button>
-      )}
+      ) : null}
 
-      {/* Mute / Unmute button */}
-      <button
-        type="button"
-        onClick={toggleMute}
-        className="absolute top-3 right-3 rounded-lg border border-white/30 bg-black/35 px-3 py-2 text-white text-sm font-semibold hover:bg-black/45 transition"
-        aria-label={muted ? "Turn audio on" : "Turn audio off"}
-      >
-        {muted ? "Sound: Off" : "Sound: On"}
-      </button>
+      {/* Only show message if the file fails to load/decode */}
+      {error === "load-or-decode-failed" ? (
+        <div className="absolute inset-0 z-10 grid place-items-center bg-black/45 text-white text-sm px-4 text-center">
+          Video failed to load. Check the file path and format (H.264 MP4).
+        </div>
+      ) : null}
     </div>
   );
 }

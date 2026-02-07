@@ -5,8 +5,6 @@ import logo from "../assets/wingslogo.png";
 
 // ✅ Hero video should be served from /public/videos for GH Pages reliability
 // Put the file here: public/videos/learn-to-skate-hero.mp4
-const HERO_VIDEO_SRC = `${import.meta.env.BASE_URL}videos/learn-to-skate-hero.mp4`;
-
 import { VideoHero } from "@/app/components/VideoHero";
 import { InfoBox } from "@/app/components/InfoBox";
 import { PriceCard } from "@/app/components/PriceCard";
@@ -24,6 +22,9 @@ import practiceIcon from "../assets/icons/icons8-practice-64.png";
 import coachingIcon from "../assets/icons/icons8-coaching-100.png";
 import qrCode from "../assets/Registration_QR.png";
 
+// ✅ IMPORTANT: Use BASE_URL so the video resolves under /lts_webpage_embed/ on GH Pages
+const HERO_VIDEO_SRC = `${import.meta.env.BASE_URL}videos/learn-to-skate-hero.mp4`;
+
 export default function App() {
   // ✅ Reusable shadow token
   const SHADOW = "shadow-[0_8px_20px_rgba(0,0,0,0.45)]";
@@ -37,6 +38,7 @@ export default function App() {
     "https://tms.ezfacility.com/OnlineRegistrations/Register.aspx?CompanyID=8390&GroupID=3995941";
 
   // ✅ Spring 2026 schedule (from EZFacility registration page)
+  // ✅ CHANGE: removed `as const` so TS doesn't make dates readonly (fixes deploy build errors)
   const SPRING_SCHEDULE = [
     {
       label: "Mondays (Preschoolers)",
@@ -95,7 +97,7 @@ export default function App() {
         "Jun 13, 2026",
       ],
     },
-  ] as const;
+  ];
 
   return (
     <div className={`min-h-screen ${PAGE_BG} flex flex-col sm:block`}>
@@ -108,9 +110,8 @@ export default function App() {
       <section className={`${PAGE_BG} border-b border-[#b2dbd7]/70`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-5 xl:px-0 py-12">
           {/*
-            ✅ CHANGE: much larger gap between the text column and the video.
-            - Increase column gap a lot on lg/xl
-            - Add an explicit spacer column that only appears on large screens
+            ✅ much larger gap between the text column and the video:
+            - explicit spacer column on lg+
           */}
           <div className="grid gap-y-8 items-center lg:grid-cols-[1fr_110px_1.2fr] xl:grid-cols-[1fr_140px_1.25fr]">
             {/* LEFT: text */}
@@ -166,7 +167,7 @@ export default function App() {
               </div>
             </div>
 
-            {/* ✅ Spacer column (creates guaranteed gap on lg+) */}
+            {/* Spacer column (creates guaranteed gap on lg+) */}
             <div className="hidden lg:block" />
 
             {/* RIGHT: Hero Video */}
