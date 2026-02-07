@@ -1,5 +1,3 @@
-import type React from "react";
-
 // ✅ Branding
 import logo from "../assets/wingslogo.png";
 
@@ -337,7 +335,7 @@ export default function App() {
         <div className={`relative overflow-hidden rounded-lg border border-white/20 p-6 sm:p-8 ${SHADOW}`}>
           <div className={`absolute inset-0 ${CARD_OVERLAY} backdrop-blur-[2px]`} />
           <div className="relative z-10">
-            <ScheduleTable items={[...SPRING_SCHEDULE]} />
+            <ScheduleTable items={SPRING_SCHEDULE} />
             <div className="mt-6 text-center" />
           </div>
         </div>

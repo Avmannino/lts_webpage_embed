@@ -1,5 +1,3 @@
-import type React from "react";
-
 type PriceCardProps = {
   title: string;
   price: string;

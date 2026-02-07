@@ -1,11 +1,11 @@
 type ScheduleItem = {
   label: string; // e.g. "Mondays (Preschoolers)"
   time: string; // e.g. "1:20 PM – 2:05 PM"
-  dates: string[]; // e.g. ["Mar 16, 2026", ...]
+  dates: readonly string[]; // ✅ allow readonly arrays from `as const`
 };
 
 type ScheduleTableProps = {
-  items: ScheduleItem[];
+  items: readonly ScheduleItem[]; // ✅ allow readonly list too
 };
 
 export function ScheduleTable({ items }: ScheduleTableProps) {
