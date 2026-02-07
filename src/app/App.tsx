@@ -23,7 +23,9 @@ import coachingIcon from "../assets/icons/icons8-coaching-100.png";
 import qrCode from "../assets/Registration_QR.png";
 
 // ✅ IMPORTANT: Use BASE_URL so the video resolves under /lts_webpage_embed/ on GH Pages
-const HERO_VIDEO_SRC = `${import.meta.env.BASE_URL}videos/learn-to-skate-hero.mp4`;
+// ✅ CHANGE: add cache-buster to avoid GH Pages / browser serving an old cached mp4
+// Bump v= when you replace/re-encode the video
+const HERO_VIDEO_SRC = `${import.meta.env.BASE_URL}videos/learn-to-skate-hero.mp4?v=3`;
 
 export default function App() {
   // ✅ Reusable shadow token
@@ -101,6 +103,9 @@ export default function App() {
 
   return (
     <div className={`min-h-screen ${PAGE_BG} flex flex-col sm:block`}>
+      {/* ✅ CHANGE: hint the browser to start fetching the mp4 ASAP */}
+      <link rel="preload" as="video" href={HERO_VIDEO_SRC} />
+
       {/* Header */}
       <header className={`${PAGE_BG} border-b border-[#b2dbd7]/70`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8 py-4" />
