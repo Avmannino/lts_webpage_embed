@@ -30,13 +30,13 @@ Error generating stack: `+a.message+`
                 `,children:[v.jsx("p",{className:"font-semibold text-gray-200",children:"A welcoming intro program for beginners — balance, glides, and safe falls through fun games and guided practice."}),v.jsx("p",{children:"Designed for kids (ages 3–8). No prior experience required — just bring a smile and we’ll take care of the rest."}),v.jsx("p",{className:"text-gray-300 font-semibold",children:"Skates & helmet are required. Rental skates are available."}),v.jsx("div",{className:"pt-2 flex justify-center",children:v.jsx("a",{href:o,target:"_blank",rel:"noopener noreferrer",className:`
                       inline-flex items-center justify-center
                       rounded-lg
-                      px-6 py-3
+                      px-7 py-3
                       font-bold text-white
                       bg-white/15 hover:bg-white/20
                       border border-white/30
                       transition
                       ${c}
-                      w-full max-w-[320px] sm:w-auto
+                      w-full max-w-[360px] sm:w-auto
                     `,children:"Register for Spring Learn to Skate"})})]})]}),v.jsx("div",{className:"hidden lg:block"}),v.jsx("div",{className:`
                 relative h-64 sm:h-80 lg:h-[360px]
                 w-full
