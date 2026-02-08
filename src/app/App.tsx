@@ -18,8 +18,9 @@ import {
 } from "@/app/components/ui/accordion";
 
 import allAgesIcon from "../assets/icons/icons8-birth-date-100.png";
-import practiceIcon from "../assets/icons/icons8-practice-64.png";
+import calendarIcon from "../assets/icons/icons8-calendar-50.png";
 import coachingIcon from "../assets/icons/icons8-coaching-100.png";
+import skatesIcon from "../assets/icons/icons8-hockey-skates-50.png";
 import qrCode from "../assets/Registration_QR.png";
 
 // ✅ IMPORTANT: Use BASE_URL so the video resolves under /lts_webpage_embed/ on GH Pages
@@ -257,7 +258,7 @@ export default function App() {
             <div className="grid w-full max-w-6xl grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-[20px] gap-y-[calc(1rem*1.0356)] justify-items-stretch">
               <div className={`w-full [&>*]:!w-full [&>*]:${SHADOW}`}>
                 <InfoBox
-                  iconImage={practiceIcon}
+                  iconImage={calendarIcon}
                   title="Class Options"
                   description="Mondays (Preschoolers), Fridays, or Saturdays"
                   iconSize="w-[40px] h-[40px]"
@@ -283,7 +284,7 @@ export default function App() {
 
               <div className={`w-full [&>*]:!w-full [&>*]:${SHADOW}`}>
                 <InfoBox
-                  iconImage={practiceIcon}
+                  iconImage={skatesIcon}
                   title="Required Gear"
                   description="Skates & helmet required (rental skates available)"
                   iconSize="w-[39px] h-[39px]"
