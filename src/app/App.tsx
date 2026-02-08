@@ -184,13 +184,13 @@ export default function App() {
                     className={`
                       inline-flex items-center justify-center
                       rounded-lg
-                      px-6 py-3
+                      px-7 py-3
                       font-bold text-white
                       bg-white/15 hover:bg-white/20
                       border border-white/30
                       transition
                       ${SHADOW}
-                      w-full max-w-[320px] sm:w-auto
+                      w-full max-w-[360px] sm:w-auto
                     `}
                   >
                     Register for Spring Learn to Skate
