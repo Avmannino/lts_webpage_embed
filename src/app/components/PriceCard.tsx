@@ -2,9 +2,11 @@ type PriceCardProps = {
   title: string;
   price: string;
   description?: string;
-  features?: string[]; // rendered as plain lines (no bullets)
+  features?: React.ReactNode[]; // rendered as plain lines (no bullets)
   className?: string;
 };
+
+import React from "react";
 
 export function PriceCard({
   title,

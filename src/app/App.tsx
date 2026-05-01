@@ -22,6 +22,7 @@ import calendarIcon from "../assets/icons/icons8-calendar-50.png";
 import coachingIcon from "../assets/icons/icons8-coaching-100.png";
 import skatesIcon from "../assets/icons/icons8-hockey-skates-50.png";
 import qrCode from "../assets/Registration_QR.png";
+import summerQrCode from "../assets/summer_registration_qr.png";
 
 // ✅ IMPORTANT: Use BASE_URL so the video resolves under /lts_webpage_embed/ on GH Pages
 // ✅ CHANGE: make the URL ABSOLUTE (origin + base) + cache-buster.
@@ -40,14 +41,17 @@ export default function App() {
   const CARD_OVERLAY = "bg-[#00335e]/85";
 
   // ✅ LINKS (from the site)
+  const SUMMER_LTS_REG_URL =
+    "https://tms.ezfacility.com/OnlineRegistrations/Register.aspx?CompanyID=8390&GroupID=4038152";
+
+  // ✅ Spring 2026 registration link
   const SPRING_LTS_REG_URL =
     "https://tms.ezfacility.com/OnlineRegistrations/Register.aspx?CompanyID=8390&GroupID=3995941";
 
-  // ✅ Spring 2026 schedule (from EZFacility registration page)
+  // ✅ Spring 2026 schedule
   const SPRING_SCHEDULE = [
     {
       label: "Mondays (Preschoolers)",
-      price: "$425",
       time: "1:20 PM – 2:05 PM",
       dates: [
         "Mar 16, 2026",
@@ -66,7 +70,6 @@ export default function App() {
     },
     {
       label: "Fridays",
-      price: "$490",
       time: "3:15 PM – 4:00 PM",
       dates: [
         "Mar 13, 2026",
@@ -85,7 +88,6 @@ export default function App() {
     },
     {
       label: "Saturdays",
-      price: "$490",
       time: "1:20 PM – 2:05 PM",
       dates: [
         "Mar 14, 2026",
@@ -100,6 +102,66 @@ export default function App() {
         "May 30, 2026",
         "Jun 6, 2026",
         "Jun 13, 2026",
+      ],
+    },
+  ];
+
+  // ✅ Summer 2026 schedule
+  const SUMMER_SCHEDULE = [
+    {
+      label: "Saturdays (Ages 3–6)",
+      time: "9:40 AM – 10:10 AM",
+      dates: [
+        "Jun 27, 2026",
+        "Jul 11, 2026",
+        "Jul 18, 2026",
+        "Jul 25, 2026",
+        "Aug 1, 2026",
+        "Aug 8, 2026",
+        "Aug 22, 2026",
+        "Aug 29, 2026",
+      ],
+    },
+    {
+      label: "Saturdays (Ages 7–10)",
+      time: "10:10 AM – 10:40 AM",
+      dates: [
+        "Jun 27, 2026",
+        "Jul 11, 2026",
+        "Jul 18, 2026",
+        "Jul 25, 2026",
+        "Aug 1, 2026",
+        "Aug 8, 2026",
+        "Aug 22, 2026",
+        "Aug 29, 2026",
+      ],
+    },
+    {
+      label: "Sundays (Ages 3–6)",
+      time: "9:40 AM – 10:10 AM",
+      dates: [
+        "Jun 28, 2026",
+        "Jul 12, 2026",
+        "Jul 19, 2026",
+        "Jul 26, 2026",
+        "Aug 2, 2026",
+        "Aug 9, 2026",
+        "Aug 23, 2026",
+        "Aug 30, 2026",
+      ],
+    },
+    {
+      label: "Sundays (Ages 7–10)",
+      time: "10:10 AM – 10:40 AM",
+      dates: [
+        "Jun 28, 2026",
+        "Jul 12, 2026",
+        "Jul 19, 2026",
+        "Jul 26, 2026",
+        "Aug 2, 2026",
+        "Aug 9, 2026",
+        "Aug 23, 2026",
+        "Aug 30, 2026",
       ],
     },
   ];
@@ -144,7 +206,7 @@ export default function App() {
                     min-[1001px]:max-[1325px]:pl-[28px]
                   "
                 >
-                  March 13th - June 13th
+                  June 27th - August 30th
                 </p>
 
                 <div className="mt-[15px] -mb-[10px] h-px w-full bg-gradient-to-r from-transparent via-[#b2dbd7]/50 to-transparent" />
@@ -168,7 +230,7 @@ export default function App() {
                 </p>
 
                 <p>
-                  Designed for kids (ages 3–8). No prior experience required — just
+                  Designed for kids (ages 3–10). No prior experience required — just
                   bring a smile and we’ll take care of the rest.
                 </p>
 
@@ -179,7 +241,7 @@ export default function App() {
                 {/* ✅ FIX: center the CTA on mobile, keep same on desktop */}
                 <div className="pt-2 flex justify-center">
                   <a
-                    href={SPRING_LTS_REG_URL}
+                    href={SUMMER_LTS_REG_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`
@@ -194,7 +256,7 @@ export default function App() {
                       w-full max-w-[360px] sm:w-auto
                     `}
                   >
-                    Register for Spring Learn to Skate
+                    Register for Summer Learn to Skate
                   </a>
                 </div>
               </div>
@@ -241,7 +303,7 @@ export default function App() {
                 title="Ages"
                 description={
                   <>
-                    Designed for <strong>kids ages 3–8</strong>. Beginner-friendly —
+                    Designed for <strong>kids ages 3–10</strong>. Beginner-friendly —
                     no prior skating experience required.
                   </>
                 }
@@ -260,7 +322,7 @@ export default function App() {
                 <InfoBox
                   iconImage={calendarIcon}
                   title="Class Options"
-                  description="Mondays (Preschoolers), Fridays, or Saturdays"
+                  description="Saturdays or Sundays"
                   iconSize="w-[40px] h-[40px]"
                   iconOffset="-mt-[6px]"
                   textOffset="-mt-[3.5px]"
@@ -309,6 +371,165 @@ export default function App() {
           <div className="my-5 h-px w-full bg-gradient-to-r from-transparent via-[#b2dbd7]/50 to-transparent" />
 
           <p className="text-center text-gray-200 mb-6 font-semibold">
+            Learn To Skate Summer 2026
+          </p>
+
+          <div className="flex justify-center w-full">
+            <div className="grid grid-cols-1 sm:grid-cols-3 items-stretch gap-6 sm:gap-x-10 w-full max-w-4xl">
+              <div className={`h-full flex [&>*]:h-full [&>*]:w-full [&>*]:mx-0 [&>*]:${SHADOW}`}>
+                <PriceCard
+                  title="One Day"
+                  price="$250"
+                  description="Summer Learn to Skate"
+                  features={[
+                    <>Saturdays <strong>OR</strong> Sundays</>,
+                    "9:40 AM – 10:40 AM",
+                  ]}
+                />
+              </div>
+
+              <div className={`h-full flex [&>*]:h-full [&>*]:w-full [&>*]:mx-0 [&>*]:${SHADOW}`}>
+                <PriceCard
+                  title="Both Days"
+                  price="$375"
+                  description="Summer Learn to Skate"
+                  features={[
+                    <>Saturdays <strong>AND</strong> Sundays</>,
+                    "9:40 AM – 10:40 AM",
+                  ]}
+                />
+              </div>
+
+              <div className={`h-full flex [&>*]:h-full [&>*]:w-full [&>*]:mx-0 [&>*]:${SHADOW}`}>
+                <PriceCard
+                  title="Drop-in"
+                  price="$35"
+                  description="Per session"
+                  features={["No commitment required", "Pay as you go"]}
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center mt-8">
+            <a
+              href={SUMMER_LTS_REG_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`inline-flex items-center justify-center rounded-lg px-6 py-3 font-bold text-white bg-white/15 hover:bg-white/20 border border-white/30 transition ${SHADOW}`}
+            >
+              Register Now
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Schedule */}
+      <section className={`${PAGE_BG} pt-2 pb-0`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8">
+          <h2 className="text-[1.5625rem] sm:text-[2.2625rem] mb-0 sm:mb-5 text-white text-center">
+            Summer 2026 Schedule
+          </h2>
+          <div className="my-5 h-px w-full bg-gradient-to-r from-transparent via-[#b2dbd7]/50 to-transparent" />
+        </div>
+      </section>
+
+      <div className="w-[92%] sm:w-full max-w-6xl mx-auto my-8 mt-2">
+        <div className={`relative overflow-hidden rounded-lg border border-white/20 p-4 sm:p-8 ${SHADOW}`}>
+          <div className={`absolute inset-0 ${CARD_OVERLAY} backdrop-blur-[2px]`} />
+          <div className="relative z-10">
+            <ScheduleTable items={SUMMER_SCHEDULE} />
+            <div className="mt-6 text-center" />
+          </div>
+        </div>
+      </div>
+
+      {/* Registration / Contact */}
+      <section className={`${PAGE_BG} py-8 pb-10`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8">
+          <h2 className="text-[1.5625rem] sm:text-[2.2625rem] mb-0 sm:mb-5 text-white text-center">
+            Summer 2026 Registration
+          </h2>
+          <div className="my-5 h-px w-full bg-gradient-to-r from-transparent via-[#b2dbd7]/50 to-transparent" />
+
+          <div className="w-[90%] sm:w-full max-w-3xl mx-auto my-8">
+            <div className={`relative overflow-hidden rounded-lg border border-white/20 p-6 sm:p-8 text-center ${SHADOW}`}>
+              <div className={`absolute inset-0 ${CARD_OVERLAY} backdrop-blur-[2px]`} />
+              <div className="relative z-10">
+                <h3 className="text-white text-[1.35rem] sm:text-[1.65rem] mb-2 -mt-[10px]">
+                  Register Today!
+                </h3>
+
+                <p className="text-white leading-relaxed">
+                  Use the QR code or click the link below to register for Summer Learn
+                  to Skate.
+                </p>
+
+                <img
+                  src={summerQrCode}
+                  alt="Registration QR Code"
+                  className="mx-auto mt-5 w-[120px] sm:w-[160px] h-auto rounded-md bg-white p-2"
+                />
+
+                <a
+                  href={SUMMER_LTS_REG_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 inline-block font-bold underline underline-offset-4 text-blue-600 hover:text-blue-700 transition text-lg md:text-3xl lg:text-3xl xl:text-4xl"
+                >
+                  Click Here to Register
+                </a>
+
+                <div className="my-6 h-px w-full bg-white/25" />
+
+                <h3 className="text-white text-[1.35rem] sm:text-[1.65rem] mb-3">
+                  Questions?
+                </h3>
+
+                <p className="text-white">
+                  Email:{" "}
+                  <a
+                    href="mailto:jwanderlingh@wingsarena.com"
+                    className="font-semibold underline underline-offset-2 hover:text-gray-300 transition"
+                  >
+                    jwanderlingh@wingsarena.com
+                  </a>
+                </p>
+
+                <div className="mt-4 text-white space-y-1">
+                  <p className="font-semibold text-white">Wings Arena</p>
+                  <p>5 Barry Place • Stamford, CT 06902</p>
+                  <p>(203) 357-1055</p>
+                </div>
+
+                <div className="mt-6" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Spring 2026 Section */}
+      <section className={`${PAGE_BG} py-10 pt-4`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8">
+          <div className="my-5 h-px w-full bg-gradient-to-r from-transparent via-[#b2dbd7]/50 to-transparent" />
+
+          <div className="flex flex-col items-center gap-3 mb-2">
+            <h2 className="text-[1.7rem] sm:text-[2.15625rem] text-white text-center">
+              Spring 2026 Learn to Skate
+            </h2>
+            <span className="inline-block rounded-full bg-emerald-500/20 border border-emerald-400/50 px-4 py-1 text-emerald-300 text-sm font-semibold tracking-wide">
+              Spring Registration is Still Open!
+            </span>
+            <p className="text-[#b2dbd7] font-bold tracking-wide text-center">
+              March 16th – June 13th
+            </p>
+          </div>
+
+          <div className="my-5 h-px w-full bg-gradient-to-r from-transparent via-[#b2dbd7]/50 to-transparent" />
+
+          {/* Spring Pricing */}
+          <p className="text-center text-gray-200 mb-6 font-semibold">
             Learn To Skate Spring 2026
           </p>
 
@@ -350,21 +571,10 @@ export default function App() {
               </div>
             </div>
           </div>
-
-          <div className="text-center mt-8">
-            <a
-              href={SPRING_LTS_REG_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`inline-flex items-center justify-center rounded-lg px-6 py-3 font-bold text-white bg-white/15 hover:bg-white/20 border border-white/30 transition ${SHADOW}`}
-            >
-              Register Now
-            </a>
-          </div>
         </div>
       </section>
 
-      {/* Schedule */}
+      {/* Spring Schedule */}
       <section className={`${PAGE_BG} pt-2 pb-0`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8">
           <h2 className="text-[1.5625rem] sm:text-[2.2625rem] mb-0 sm:mb-5 text-white text-center">
@@ -379,16 +589,15 @@ export default function App() {
           <div className={`absolute inset-0 ${CARD_OVERLAY} backdrop-blur-[2px]`} />
           <div className="relative z-10">
             <ScheduleTable items={SPRING_SCHEDULE} />
-            <div className="mt-6 text-center" />
           </div>
         </div>
       </div>
 
-      {/* Registration / Contact */}
+      {/* Spring Registration */}
       <section className={`${PAGE_BG} py-8 pb-10`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8">
           <h2 className="text-[1.5625rem] sm:text-[2.2625rem] mb-0 sm:mb-5 text-white text-center">
-            Registration
+            Spring Registration
           </h2>
           <div className="my-5 h-px w-full bg-gradient-to-r from-transparent via-[#b2dbd7]/50 to-transparent" />
 
@@ -397,7 +606,7 @@ export default function App() {
               <div className={`absolute inset-0 ${CARD_OVERLAY} backdrop-blur-[2px]`} />
               <div className="relative z-10">
                 <h3 className="text-white text-[1.35rem] sm:text-[1.65rem] mb-2 -mt-[10px]">
-                  Register Today!
+                  Register for Spring Today!
                 </h3>
 
                 <p className="text-white leading-relaxed">
@@ -427,7 +636,13 @@ export default function App() {
                 </h3>
 
                 <p className="text-white">
-                  Email: <span className="font-semibold">info@wingsarena.com</span>
+                  Email:{" "}
+                  <a
+                    href="mailto:jwanderlingh@wingsarena.com"
+                    className="font-semibold underline underline-offset-2 hover:text-gray-300 transition"
+                  >
+                    jwanderlingh@wingsarena.com
+                  </a>
                 </p>
 
                 <div className="mt-4 text-white space-y-1">
@@ -461,7 +676,7 @@ export default function App() {
                     Who is Learn to Skate for?
                   </AccordionTrigger>
                   <AccordionContent className="text-white">
-                    It’s designed for beginner skaters (kids ages 3–8) and focuses on
+                    It’s designed for beginner skaters (kids ages 3–10) and focuses on
                     building confidence through step-by-step instruction and fun games.
                   </AccordionContent>
                 </AccordionItem>
@@ -480,8 +695,8 @@ export default function App() {
                     When are classes?
                   </AccordionTrigger>
                   <AccordionContent className="text-white">
-                    Spring Learn to Skate runs March 13 – June 13, 2026 with options on
-                    Mondays (Preschoolers), Fridays, or Saturdays. See the Schedule section above for
+                    Summer Learn to Skate runs June 27 – August 30, 2026 with options on
+                    Saturdays or Sundays. See the Schedule section above for
                     exact dates and times.
                   </AccordionContent>
                 </AccordionItem>
@@ -491,8 +706,8 @@ export default function App() {
                     How much does it cost?
                   </AccordionTrigger>
                   <AccordionContent className="text-white">
-                    Spring options are $425 (Mondays - Preschool) or $490 (Fridays/Saturdays). A
-                    2-day Friday &amp; Saturday bundle is $735.
+                    One day (Saturdays or Sundays) is $250 for the full package. Both days
+                    is $375. Drop-ins are welcome at $35 per session — no commitment required.
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
