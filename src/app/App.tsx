@@ -3,9 +3,7 @@
 // ✅ Branding
 import logo from "../assets/wingslogo.png";
 
-// ✅ Hero video should be served from /public/videos for GH Pages reliability
-// Put the file here: public/videos/learn-to-skate-hero.mp4
-import { VideoHero } from "@/app/components/VideoHero";
+import { HeroCarousel } from "@/app/components/HeroCarousel";
 import { InfoBox } from "@/app/components/InfoBox";
 import { PriceCard } from "@/app/components/PriceCard";
 import { ScheduleTable } from "@/app/components/ScheduleTable";
@@ -23,13 +21,6 @@ import coachingIcon from "../assets/icons/icons8-coaching-100.png";
 import skatesIcon from "../assets/icons/icons8-hockey-skates-50.png";
 import summerQrCode from "../assets/summer_registration_qr.png";
 
-// ✅ IMPORTANT: Use BASE_URL so the video resolves under /lts_webpage_embed/ on GH Pages
-// ✅ CHANGE: make the URL ABSOLUTE (origin + base) + cache-buster.
-// Bump v= whenever you re-upload/re-encode.
-const HERO_VIDEO_SRC =
-  typeof window !== "undefined"
-    ? `${window.location.origin}${import.meta.env.BASE_URL}videos/learn-to-skate-hero.mp4?v=4`
-    : `${import.meta.env.BASE_URL}videos/learn-to-skate-hero.mp4?v=4`;
 
 export default function App() {
   // ✅ Reusable shadow token
@@ -105,10 +96,6 @@ export default function App() {
 
   return (
     <div className={`min-h-screen ${PAGE_BG} flex flex-col sm:block`}>
-      {/* ✅ CHANGE: encourage early fetch */}
-      {/* NOTE: some browsers complain about `as="video"`; harmless */}
-      <link rel="preload" as="video" href={HERO_VIDEO_SRC} />
-
       {/* Header */}
       <header className={`${PAGE_BG} border-b border-[#b2dbd7]/70`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8 py-4" />
@@ -212,7 +199,7 @@ export default function App() {
                 rounded-lg overflow-hidden
               `}
             >
-              <VideoHero key={HERO_VIDEO_SRC} src={HERO_VIDEO_SRC} />
+              <HeroCarousel />
             </div>
           </div>
         </div>
