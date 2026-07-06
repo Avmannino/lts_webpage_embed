@@ -177,7 +177,7 @@ export default function App() {
       <section className={`${PAGE_BG} border-b border-[#b2dbd7]/70`}>
         {/* ✅ CHANGE: slightly tighter padding on mobile, keep your desktop spacing */}
         <div className="max-w-7xl mx-auto px-4 sm:px-5 xl:px-0 pt-10 pb-12 sm:py-12">
-          <div className="grid gap-y-8 items-center lg:grid-cols-[1fr_110px_1.2fr] xl:grid-cols-[1fr_140px_1.25fr]">
+          <div className="grid gap-y-8 items-center lg:grid-cols-[1.5fr_60px_1fr] xl:grid-cols-[1.5fr_80px_1fr]">
             {/* LEFT: text */}
             <div className="min-[1001px]:max-[1325px]:pr-5">
               <div className="flex flex-col items-center lg:items-center mb-5">
