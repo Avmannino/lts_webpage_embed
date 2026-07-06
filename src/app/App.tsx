@@ -20,6 +20,7 @@ import calendarIcon from "../assets/icons/icons8-calendar-50.png";
 import coachingIcon from "../assets/icons/icons8-coaching-100.png";
 import skatesIcon from "../assets/icons/icons8-hockey-skates-50.png";
 import summerQrCode from "../assets/summer_registration_qr.png";
+import fallQrCode from "../assets/fall_registration_qr_lts.png";
 
 
 export default function App() {
@@ -33,6 +34,77 @@ export default function App() {
   // ✅ LINKS (from the site)
   const SUMMER_LTS_REG_URL =
     "https://tms.ezfacility.com/OnlineRegistrations/Register.aspx?CompanyID=8390&GroupID=4038152";
+
+  const FALL_LTS_REG_URL =
+    "https://tms.ezfacility.com/OnlineRegistrations/Register.aspx?CompanyID=8390&GroupID=4084755#SelectRegistrationType";
+
+  // Fall 2026 schedule — Sep 8 through Nov 13, 10 weeks
+  const FALL_SCHEDULE = [
+    {
+      label: "Tuesdays",
+      time: "3:20 PM – 3:50 PM",
+      dates: [
+        "Sep 8, 2026",
+        "Sep 15, 2026",
+        "Sep 22, 2026",
+        "Sep 29, 2026",
+        "Oct 6, 2026",
+        "Oct 13, 2026",
+        "Oct 20, 2026",
+        "Oct 27, 2026",
+        "Nov 3, 2026",
+        "Nov 10, 2026",
+      ],
+    },
+    {
+      label: "Tuesdays",
+      time: "3:50 PM – 4:20 PM",
+      dates: [
+        "Sep 8, 2026",
+        "Sep 15, 2026",
+        "Sep 22, 2026",
+        "Sep 29, 2026",
+        "Oct 6, 2026",
+        "Oct 13, 2026",
+        "Oct 20, 2026",
+        "Oct 27, 2026",
+        "Nov 3, 2026",
+        "Nov 10, 2026",
+      ],
+    },
+    {
+      label: "Fridays",
+      time: "3:55 PM – 4:25 PM",
+      dates: [
+        "Sep 11, 2026",
+        "Sep 18, 2026",
+        "Sep 25, 2026",
+        "Oct 2, 2026",
+        "Oct 9, 2026",
+        "Oct 16, 2026",
+        "Oct 23, 2026",
+        "Oct 30, 2026",
+        "Nov 6, 2026",
+        "Nov 13, 2026",
+      ],
+    },
+    {
+      label: "Fridays",
+      time: "4:25 PM – 4:50 PM",
+      dates: [
+        "Sep 11, 2026",
+        "Sep 18, 2026",
+        "Sep 25, 2026",
+        "Oct 2, 2026",
+        "Oct 9, 2026",
+        "Oct 16, 2026",
+        "Oct 23, 2026",
+        "Oct 30, 2026",
+        "Nov 6, 2026",
+        "Nov 13, 2026",
+      ],
+    },
+  ];
 
   // ✅ Summer 2026 schedule
   const SUMMER_SCHEDULE = [
@@ -397,6 +469,149 @@ export default function App() {
 
                 <a
                   href={SUMMER_LTS_REG_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 inline-block font-bold underline underline-offset-4 text-blue-600 hover:text-blue-700 transition text-lg md:text-3xl lg:text-3xl xl:text-4xl"
+                >
+                  Click Here to Register
+                </a>
+
+                <div className="my-6 h-px w-full bg-white/25" />
+
+                <h3 className="text-white text-[1.35rem] sm:text-[1.65rem] mb-3">
+                  Questions?
+                </h3>
+
+                <p className="text-white">
+                  Email:{" "}
+                  <a
+                    href="mailto:jwanderlingh@wingsarena.com"
+                    className="font-semibold underline underline-offset-2 hover:text-gray-300 transition"
+                  >
+                    jwanderlingh@wingsarena.com
+                  </a>
+                </p>
+
+                <div className="mt-4 text-white space-y-1">
+                  <p className="font-semibold text-white">Wings Arena</p>
+                  <p>5 Barry Place • Stamford, CT 06902</p>
+                  <p>(203) 357-1055</p>
+                </div>
+
+                <div className="mt-6" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Fall 2026 Section */}
+      <section className={`${PAGE_BG} py-10 pt-4`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8">
+          <div className="my-5 h-px w-full bg-gradient-to-r from-transparent via-[#b2dbd7]/50 to-transparent" />
+
+          <div className="flex flex-col items-center gap-3 mb-2">
+            <h2 className="text-[1.7rem] sm:text-[2.15625rem] text-white text-center">
+              Fall 2026 Learn to Skate
+            </h2>
+            <p className="text-[#b2dbd7] font-bold tracking-wide text-center">
+              September 8th – November 13th
+            </p>
+          </div>
+
+          <div className="my-5 h-px w-full bg-gradient-to-r from-transparent via-[#b2dbd7]/50 to-transparent" />
+
+          <p className="text-center text-gray-200 mb-6 font-semibold">
+            Learn To Skate Fall 2026
+          </p>
+
+          <div className="flex justify-center w-full">
+            <div className="grid grid-cols-1 sm:grid-cols-3 items-stretch gap-6 sm:gap-x-10 w-full max-w-4xl">
+              <div className={`h-full flex [&>*]:h-full [&>*]:w-full [&>*]:mx-0 [&>*]:${SHADOW}`}>
+                <PriceCard
+                  title="1 Class"
+                  price="$300"
+                  description="One 30-min session per week"
+                  features={[
+                    "Any single Tuesday or Friday slot",
+                    "10-week session",
+                  ]}
+                />
+              </div>
+
+              <div className={`h-full flex [&>*]:h-full [&>*]:w-full [&>*]:mx-0 [&>*]:${SHADOW}`}>
+                <PriceCard
+                  title="2 Classes"
+                  price="$450"
+                  description="Two 30-min sessions per week"
+                  features={[
+                    <>Same-day <strong>or</strong> Tue + Fri combo</>,
+                    "10-week session",
+                  ]}
+                />
+              </div>
+
+              <div className={`h-full flex [&>*]:h-full [&>*]:w-full [&>*]:mx-0 [&>*]:${SHADOW}`}>
+                <PriceCard
+                  title="Drop-in"
+                  price="$35"
+                  description="Per session"
+                  features={["No commitment required", "Pay as you go"]}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Fall Schedule */}
+      <section className={`${PAGE_BG} pt-2 pb-0`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8">
+          <h2 className="text-[1.5625rem] sm:text-[2.2625rem] mb-0 sm:mb-5 text-white text-center">
+            Fall 2026 Schedule
+          </h2>
+          <div className="my-5 h-px w-full bg-gradient-to-r from-transparent via-[#b2dbd7]/50 to-transparent" />
+        </div>
+      </section>
+
+      <div className="w-[92%] sm:w-full max-w-6xl mx-auto my-8 mt-2">
+        <div className={`relative overflow-hidden rounded-lg border border-white/20 p-4 sm:p-8 ${SHADOW}`}>
+          <div className={`absolute inset-0 ${CARD_OVERLAY} backdrop-blur-[2px]`} />
+          <div className="relative z-10">
+            <ScheduleTable items={FALL_SCHEDULE} />
+          </div>
+        </div>
+      </div>
+
+      {/* Fall Registration */}
+      <section className={`${PAGE_BG} py-8 pb-10`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8">
+          <h2 className="text-[1.5625rem] sm:text-[2.2625rem] mb-0 sm:mb-5 text-white text-center">
+            Fall 2026 Registration
+          </h2>
+          <div className="my-5 h-px w-full bg-gradient-to-r from-transparent via-[#b2dbd7]/50 to-transparent" />
+
+          <div className="w-[90%] sm:w-full max-w-3xl mx-auto my-8">
+            <div className={`relative overflow-hidden rounded-lg border border-white/20 p-6 sm:p-8 text-center ${SHADOW}`}>
+              <div className={`absolute inset-0 ${CARD_OVERLAY} backdrop-blur-[2px]`} />
+              <div className="relative z-10">
+                <h3 className="text-white text-[1.35rem] sm:text-[1.65rem] mb-2 -mt-[10px]">
+                  Register for Fall Today!
+                </h3>
+
+                <p className="text-white leading-relaxed">
+                  Use the QR code or click the link below to register for Fall Learn
+                  to Skate.
+                </p>
+
+                <img
+                  src={fallQrCode}
+                  alt="Fall Registration QR Code"
+                  className="mx-auto mt-5 w-[120px] sm:w-[160px] h-auto rounded-md bg-white p-2"
+                />
+
+                <a
+                  href={FALL_LTS_REG_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-6 inline-block font-bold underline underline-offset-4 text-blue-600 hover:text-blue-700 transition text-lg md:text-3xl lg:text-3xl xl:text-4xl"
