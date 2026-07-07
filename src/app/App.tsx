@@ -554,7 +554,7 @@ export default function App() {
               <div className={`h-full flex [&>*]:h-full [&>*]:w-full [&>*]:mx-0 [&>*]:${SHADOW}`}>
                 <PriceCard
                   title="Drop-in"
-                  price="$35"
+                  price="$40"
                   description="Per session"
                   features={["No commitment required", "Pay as you go"]}
                 />
