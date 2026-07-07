@@ -530,7 +530,7 @@ export default function App() {
               <div className={`h-full flex [&>*]:h-full [&>*]:w-full [&>*]:mx-0 [&>*]:${SHADOW}`}>
                 <PriceCard
                   title="1 Class"
-                  price="$300"
+                  price="$350"
                   description="One 30-min session per week"
                   features={[
                     "Any single Tuesday or Friday slot",
@@ -542,7 +542,7 @@ export default function App() {
               <div className={`h-full flex [&>*]:h-full [&>*]:w-full [&>*]:mx-0 [&>*]:${SHADOW}`}>
                 <PriceCard
                   title="2 Classes"
-                  price="$450"
+                  price="$525"
                   description="Two 30-min sessions per week"
                   features={[
                     <>Same-day <strong>or</strong> Tue + Fri combo</>,
