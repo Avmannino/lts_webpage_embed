@@ -202,7 +202,7 @@ export default function App() {
                     min-[1001px]:max-[1325px]:pl-[28px]
                   "
                 >
-                  June 27th - August 30th
+               
                 </p>
 
                 <div className="mt-[15px] -mb-[10px] h-px w-full bg-gradient-to-r from-transparent via-[#b2dbd7]/50 to-transparent" />
