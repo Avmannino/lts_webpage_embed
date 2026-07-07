@@ -18,7 +18,7 @@ Error generating stack: `+a.message+`
                     text-center
                     mr-0 lg:mr-4
                     min-[1001px]:max-[1325px]:pl-[28px]
-                  `,children:"June 27th - August 30th"}),d.jsx("div",{className:"mt-[15px] -mb-[10px] h-px w-full bg-gradient-to-r from-transparent via-[#b2dbd7]/50 to-transparent"})]}),d.jsxs("div",{className:`
+                  `}),d.jsx("div",{className:"mt-[15px] -mb-[10px] h-px w-full bg-gradient-to-r from-transparent via-[#b2dbd7]/50 to-transparent"})]}),d.jsxs("div",{className:`
                   text-gray-200 mb-4
                   space-y-5
                   text-center lg:text-center
