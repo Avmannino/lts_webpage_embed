@@ -123,7 +123,7 @@ export default function App() {
       ],
     },
     {
-      label: "Saturdays (Ages 7–10)",
+      label: "Saturdays (All Ages)",
       time: "10:10 AM – 10:40 AM",
       dates: [
         "Jun 27, 2026",
@@ -151,7 +151,7 @@ export default function App() {
       ],
     },
     {
-      label: "Sundays (Ages 7–10)",
+      label: "Sundays (All Ages)",
       time: "10:10 AM – 10:40 AM",
       dates: [
         "Jun 28, 2026",
@@ -574,7 +574,12 @@ export default function App() {
           <div className={`absolute inset-0 ${CARD_OVERLAY} backdrop-blur-[2px]`} />
           <div className="relative z-10">
             <ScheduleTable items={SUMMER_SCHEDULE} />
-            <div className="mt-6 text-center" />
+            <div className="mt-6 text-center">
+              <p className="text-[#b2dbd7] text-sm sm:text-base font-semibold">
+                The <strong className="text-white">10:10 AM session</strong> on Saturdays &amp; Sundays is open to{" "}
+                <strong className="text-white">all ages</strong> — skaters of any skill level are welcome!
+              </p>
+            </div>
           </div>
         </div>
       </div>
