@@ -231,7 +231,7 @@ export default function App() {
                 </p>
 
                 <p className="text-gray-300 font-semibold">
-                  Skates &amp; helmet are required. Rental skates are available.
+                  Skates, helmet &amp; mittens/gloves are required. Rental skates are available.
                 </p>
 
                 {/* ✅ FIX: center the CTA on mobile, keep same on desktop */}
@@ -344,7 +344,7 @@ export default function App() {
                 <InfoBox
                   iconImage={skatesIcon}
                   title="Required Gear"
-                  description="Skates & helmet required (rental skates available)"
+                  description="Skates, helmet & mittens/gloves are required (rental skates available)"
                   iconSize="w-[39px] h-[39px]"
                   iconOffset="-mt-[6px]"
                   textOffset="-mt-[3.5px]"
@@ -677,7 +677,7 @@ export default function App() {
                     What equipment is required?
                   </AccordionTrigger>
                   <AccordionContent className="text-white">
-                    Skates and a helmet are required. Rental skates are available.
+                    Skates, helmet & mittens/gloves are required. Rental skates are available.
                   </AccordionContent>
                 </AccordionItem>
 
