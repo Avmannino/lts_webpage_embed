@@ -90,7 +90,7 @@ export default function App() {
     },
     {
       label: "Fridays",
-      time: "4:25 PM – 4:50 PM",
+      time: "4:25 PM – 4:55 PM",
       dates: [
         "Sep 11, 2026",
         "Sep 18, 2026",
