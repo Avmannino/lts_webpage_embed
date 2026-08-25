@@ -19,7 +19,6 @@ import allAgesIcon from "../assets/icons/icons8-birth-date-100.png";
 import calendarIcon from "../assets/icons/icons8-calendar-50.png";
 import coachingIcon from "../assets/icons/icons8-coaching-100.png";
 import skatesIcon from "../assets/icons/icons8-hockey-skates-50.png";
-import summerQrCode from "../assets/summer_registration_qr.png";
 import fallQrCode from "../assets/fall_registration_qr_lts.png";
 
 
@@ -32,11 +31,11 @@ export default function App() {
   const CARD_OVERLAY = "bg-[#00335e]/85";
 
   // ✅ LINKS (from the site)
-  const SUMMER_LTS_REG_URL =
-    "https://tms.ezfacility.com/OnlineRegistrations/Register.aspx?CompanyID=8390&GroupID=4038152";
-
   const FALL_LTS_REG_URL =
     "https://tms.ezfacility.com/OnlineRegistrations/Register.aspx?CompanyID=8390&GroupID=4084755#SelectRegistrationType";
+
+  const PRESCHOOL_LTS_REG_URL =
+    "https://tms.ezfacility.com/OnlineRegistrations/Register.aspx?CompanyID=8390&GroupID=4104307";
 
   // Fall 2026 schedule — Sep 8 through Nov 13, 10 weeks
   const FALL_SCHEDULE = [
@@ -73,6 +72,38 @@ export default function App() {
       ],
     },
     {
+      label: "Thursdays (Preschoolers)",
+      time: "12:00 PM – 12:30 PM",
+      dates: [
+        "Sep 10, 2026",
+        "Sep 17, 2026",
+        "Sep 24, 2026",
+        "Oct 1, 2026",
+        "Oct 8, 2026",
+        "Oct 15, 2026",
+        "Oct 22, 2026",
+        "Oct 29, 2026",
+        "Nov 5, 2026",
+        "Nov 12, 2026",
+      ],
+    },
+    {
+      label: "Thursdays (Preschoolers)",
+      time: "12:30 PM – 1:00 PM",
+      dates: [
+        "Sep 10, 2026",
+        "Sep 17, 2026",
+        "Sep 24, 2026",
+        "Oct 1, 2026",
+        "Oct 8, 2026",
+        "Oct 15, 2026",
+        "Oct 22, 2026",
+        "Oct 29, 2026",
+        "Nov 5, 2026",
+        "Nov 12, 2026",
+      ],
+    },
+    {
       label: "Fridays",
       time: "3:55 PM – 4:25 PM",
       dates: [
@@ -106,68 +137,8 @@ export default function App() {
     },
   ];
 
-  // ✅ Summer 2026 schedule
-  const SUMMER_SCHEDULE = [
-    {
-      label: "Saturdays (Ages 3–6)",
-      time: "9:40 AM – 10:10 AM",
-      dates: [
-        "Jun 27, 2026",
-        "Jul 11, 2026",
-        "Jul 18, 2026",
-        "Jul 25, 2026",
-        "Aug 1, 2026",
-        "Aug 8, 2026",
-        "Aug 22, 2026",
-        "Aug 29, 2026",
-      ],
-    },
-    {
-      label: "Saturdays (All Ages)",
-      time: "10:10 AM – 10:40 AM",
-      dates: [
-        "Jun 27, 2026",
-        "Jul 11, 2026",
-        "Jul 18, 2026",
-        "Jul 25, 2026",
-        "Aug 1, 2026",
-        "Aug 8, 2026",
-        "Aug 22, 2026",
-        "Aug 29, 2026",
-      ],
-    },
-    {
-      label: "Sundays (Ages 3–6)",
-      time: "9:40 AM – 10:10 AM",
-      dates: [
-        "Jun 28, 2026",
-        "Jul 12, 2026",
-        "Jul 19, 2026",
-        "Jul 26, 2026",
-        "Aug 2, 2026",
-        "Aug 9, 2026",
-        "Aug 23, 2026",
-        "Aug 30, 2026",
-      ],
-    },
-    {
-      label: "Sundays (All Ages)",
-      time: "10:10 AM – 10:40 AM",
-      dates: [
-        "Jun 28, 2026",
-        "Jul 12, 2026",
-        "Jul 19, 2026",
-        "Jul 26, 2026",
-        "Aug 2, 2026",
-        "Aug 9, 2026",
-        "Aug 23, 2026",
-        "Aug 30, 2026",
-      ],
-    },
-  ];
-
   return (
-    <div className={`min-h-screen ${PAGE_BG} flex flex-col sm:block`}>
+    <div className={`w-full min-w-0 min-h-0 h-auto ${PAGE_BG} flex flex-col sm:block`}>
       {/* Header */}
       <header className={`${PAGE_BG} border-b border-[#b2dbd7]/70`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8 py-4" />
@@ -181,6 +152,12 @@ export default function App() {
             {/* LEFT: text */}
             <div className="min-[1001px]:max-[1325px]:pr-5">
               <div className="flex flex-col items-center lg:items-center mb-5">
+                <img
+                  src={`${import.meta.env.BASE_URL}white-logo.png`}
+                  alt=""
+                  className="mx-auto w-[90px] sm:w-[110px] mb-3 h-auto relative -left-[16px] sm:-left-[21px]"
+                />
+
                 <img
                   src={logo}
                   alt="Wings Arena"
@@ -235,7 +212,7 @@ export default function App() {
                 </p>
 
                 {/* ✅ FIX: center the CTA on mobile, keep same on desktop */}
-                <div className="pt-2 flex justify-center">
+                <div className="pt-2 flex flex-col sm:flex-row justify-center gap-3">
                   <a
                     href={FALL_LTS_REG_URL}
                     target="_blank"
@@ -243,16 +220,35 @@ export default function App() {
                     className={`
                       inline-flex items-center justify-center
                       rounded-lg
-                      px-7 py-3
-                      font-bold text-white
+                      px-5 py-2.5
+                      font-bold text-white text-base whitespace-nowrap
                       bg-white/15 hover:bg-white/20
                       border border-white/30
-                      transition
+                      transition hover:-translate-y-1
                       ${SHADOW}
                       w-full max-w-[360px] sm:w-auto
                     `}
                   >
                     Register for Fall Learn to Skate
+                  </a>
+
+                  <a
+                    href={PRESCHOOL_LTS_REG_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`
+                      inline-flex items-center justify-center
+                      rounded-lg
+                      px-5 py-2.5
+                      font-bold text-white text-base whitespace-nowrap
+                      bg-white/15 hover:bg-white/20
+                      border border-white/30
+                      transition hover:-translate-y-1
+                      ${SHADOW}
+                      w-full max-w-[360px] sm:w-auto
+                    `}
+                  >
+                    Register for Preschooler Learn to Skate
                   </a>
                 </div>
               </div>
@@ -366,16 +362,13 @@ export default function App() {
             <h2 className="text-[1.7rem] sm:text-[2.15625rem] text-white text-center">
               Fall 2026 Learn to Skate
             </h2>
+
             <p className="text-[#b2dbd7] font-bold tracking-wide text-center">
               September 8th – November 13th
             </p>
           </div>
 
           <div className="my-5 h-px w-full bg-gradient-to-r from-transparent via-[#b2dbd7]/50 to-transparent" />
-
-          <p className="text-center text-gray-200 mb-6 font-semibold">
-            Learn To Skate Fall 2026
-          </p>
 
           <div className="flex justify-center w-full">
             <div className="grid grid-cols-1 sm:grid-cols-3 items-stretch gap-6 sm:gap-x-10 w-full max-w-4xl">
@@ -385,7 +378,7 @@ export default function App() {
                   price="$350"
                   description="One 30-min session per week"
                   features={[
-                    "Any single Tuesday or Friday slot",
+                    "Any single Tuesday, Thursday or Friday slot",
                     "10-week session",
                   ]}
                 />
@@ -422,6 +415,7 @@ export default function App() {
           <h2 className="text-[1.5625rem] sm:text-[2.2625rem] mb-0 sm:mb-5 text-white text-center">
             Fall 2026 Schedule
           </h2>
+
           <div className="my-5 h-px w-full bg-gradient-to-r from-transparent via-[#b2dbd7]/50 to-transparent" />
         </div>
       </section>
@@ -429,220 +423,126 @@ export default function App() {
       <div className="w-[92%] sm:w-full max-w-6xl mx-auto my-8 mt-2">
         <div className={`relative overflow-hidden rounded-lg border border-white/20 p-4 sm:p-8 ${SHADOW}`}>
           <div className={`absolute inset-0 ${CARD_OVERLAY} backdrop-blur-[2px]`} />
+
           <div className="relative z-10">
             <ScheduleTable items={FALL_SCHEDULE} />
           </div>
         </div>
       </div>
 
-      {/* Fall Registration */}
+      {/* Registration */}
       <section className={`${PAGE_BG} py-8 pb-10`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8">
           <h2 className="text-[1.5625rem] sm:text-[2.2625rem] mb-0 sm:mb-5 text-white text-center">
-            Fall 2026 Registration
+            2026 Registration
           </h2>
+
           <div className="my-5 h-px w-full bg-gradient-to-r from-transparent via-[#b2dbd7]/50 to-transparent" />
 
-          <div className="w-[90%] sm:w-full max-w-3xl mx-auto my-8">
-            <div className={`relative overflow-hidden rounded-lg border border-white/20 p-6 sm:p-8 text-center ${SHADOW}`}>
-              <div className={`absolute inset-0 ${CARD_OVERLAY} backdrop-blur-[2px]`} />
-              <div className="relative z-10">
-                <h3 className="text-white text-[1.35rem] sm:text-[1.65rem] mb-2 -mt-[10px]">
-                  Register for Fall Today!
-                </h3>
+          <div className="w-[90%] sm:w-full max-w-5xl mx-auto my-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className={`relative overflow-hidden rounded-lg border border-white/20 p-4 sm:p-6 text-center ${SHADOW}`}>
+                <div className={`absolute inset-0 ${CARD_OVERLAY} backdrop-blur-[2px]`} />
 
-                <p className="text-white leading-relaxed">
-                  Use the QR code or click the link below to register for Fall Learn
-                  to Skate.
-                </p>
+                <div className="relative z-10">
+                  <h3 className="text-white text-[1.15rem] sm:text-[1.4rem] mb-2 -mt-[6px]">
+                    Register for Fall
+                  </h3>
 
-                <img
-                  src={fallQrCode}
-                  alt="Fall Registration QR Code"
-                  className="mx-auto mt-5 w-[120px] sm:w-[160px] h-auto rounded-md bg-white p-2"
-                />
+                  <p className="text-white text-sm leading-relaxed">
+                    Use the QR code or click the link below to register for Fall Learn
+                    to Skate.
+                  </p>
 
-                <a
-                  href={FALL_LTS_REG_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-6 inline-block font-bold underline underline-offset-4 text-blue-600 hover:text-blue-700 transition text-lg md:text-3xl lg:text-3xl xl:text-4xl"
-                >
-                  Click Here to Register
-                </a>
+                  <img
+                    src={fallQrCode}
+                    alt="Fall Registration QR Code"
+                    className="mx-auto mt-4 w-[100px] sm:w-[130px] h-auto rounded-md bg-white p-2"
+                  />
 
-                <div className="my-6 h-px w-full bg-white/25" />
-
-                <h3 className="text-white text-[1.35rem] sm:text-[1.65rem] mb-3">
-                  Questions?
-                </h3>
-
-                <p className="text-white">
-                  Email:{" "}
                   <a
-                    href="mailto:jwanderlingh@wingsarena.com"
-                    className="font-semibold underline underline-offset-2 hover:text-gray-300 transition"
+                    href={FALL_LTS_REG_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-block font-bold underline underline-offset-4 text-blue-600 hover:text-blue-700 transition text-base sm:text-xl lg:text-2xl"
                   >
-                    jwanderlingh@wingsarena.com
+                    Click Here to Register
                   </a>
-                </p>
 
-                <div className="mt-4 text-white space-y-1">
-                  <p className="font-semibold text-white">Wings Arena</p>
-                  <p>5 Barry Place • Stamford, CT 06902</p>
-                  <p>(203) 357-1055</p>
+                  <div className="my-4 h-px w-full bg-white/25" />
+
+                  <h3 className="text-white text-[1.05rem] sm:text-[1.2rem] mb-2">
+                    Questions?
+                  </h3>
+
+                  <p className="text-white text-sm">
+                    Email:{" "}
+                    <a
+                      href="mailto:jwanderlingh@wingsarena.com"
+                      className="font-semibold underline underline-offset-2 hover:text-gray-300 transition"
+                    >
+                      jwanderlingh@wingsarena.com
+                    </a>
+                  </p>
+
+                  <div className="mt-3 text-white text-sm space-y-1">
+                    <p className="font-semibold text-white">Wings Arena</p>
+                    <p>5 Barry Place • Stamford, CT 06902</p>
+                    <p>(203) 357-1055</p>
+                  </div>
                 </div>
-
-                <div className="mt-6" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Summer Pricing */}
-      <section className={`${PAGE_BG} py-10`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8">
-          <h2 className="text-[1.7rem] sm:text-[2.15625rem] mb-2 text-white text-center">
-            Pricing Options - Summer Learn to Skate
-          </h2>
-
-          <div className="my-5 h-px w-full bg-gradient-to-r from-transparent via-[#b2dbd7]/50 to-transparent" />
-
-          <div className="flex justify-center w-full">
-            <div className="grid grid-cols-1 sm:grid-cols-3 items-stretch gap-6 sm:gap-x-10 w-full max-w-4xl">
-              <div className={`h-full flex [&>*]:h-full [&>*]:w-full [&>*]:mx-0 [&>*]:${SHADOW}`}>
-                <PriceCard
-                  title="One Day"
-                  price="$250"
-                  description="Summer Learn to Skate"
-                  features={[
-                    <>Saturdays <strong>OR</strong> Sundays</>,
-                    "9:40 AM – 10:40 AM",
-                  ]}
-                />
               </div>
 
-              <div className={`h-full flex [&>*]:h-full [&>*]:w-full [&>*]:mx-0 [&>*]:${SHADOW}`}>
-                <PriceCard
-                  title="Both Days"
-                  price="$375"
-                  description="Summer Learn to Skate"
-                  features={[
-                    <>Saturdays <strong>AND</strong> Sundays</>,
-                    "9:40 AM – 10:40 AM",
-                  ]}
-                />
-              </div>
+              <div className={`relative overflow-hidden rounded-lg border border-white/20 p-4 sm:p-6 text-center ${SHADOW}`}>
+                <div className={`absolute inset-0 ${CARD_OVERLAY} backdrop-blur-[2px]`} />
 
-              <div className={`h-full flex [&>*]:h-full [&>*]:w-full [&>*]:mx-0 [&>*]:${SHADOW}`}>
-                <PriceCard
-                  title="Drop-in"
-                  price="$35"
-                  description="Per session"
-                  features={["No commitment required", "Pay as you go"]}
-                />
-              </div>
-            </div>
-          </div>
+                <div className="relative z-10">
+                  <h3 className="text-white text-[1.15rem] sm:text-[1.4rem] mb-2 -mt-[6px]">
+                    Register Your Preschooler
+                  </h3>
 
-          <div className="text-center mt-8">
-            <a
-              href={SUMMER_LTS_REG_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`inline-flex items-center justify-center rounded-lg px-6 py-3 font-bold text-white bg-white/15 hover:bg-white/20 border border-white/30 transition ${SHADOW}`}
-            >
-              Register Now
-            </a>
-          </div>
-        </div>
-      </section>
+                  <p className="text-white text-sm leading-relaxed">
+                    Use the QR code or click the link below to register your Preschooler for
+                    Learn to Skate.
+                  </p>
 
-      {/* Schedule */}
-      <section className={`${PAGE_BG} pt-2 pb-0`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8">
-          <h2 className="text-[1.5625rem] sm:text-[2.2625rem] mb-0 sm:mb-5 text-white text-center">
-            Summer 2026 Schedule
-          </h2>
-          <div className="my-5 h-px w-full bg-gradient-to-r from-transparent via-[#b2dbd7]/50 to-transparent" />
-        </div>
-      </section>
+                  <img
+                    src={`${import.meta.env.BASE_URL}qr-reg-preschool.png`}
+                    alt="Preschooler Registration QR Code"
+                    className="mx-auto mt-4 w-[100px] sm:w-[130px] h-auto rounded-md bg-white p-2"
+                  />
 
-      <div className="w-[92%] sm:w-full max-w-6xl mx-auto my-8 mt-2">
-        <div className={`relative overflow-hidden rounded-lg border border-white/20 p-4 sm:p-8 ${SHADOW}`}>
-          <div className={`absolute inset-0 ${CARD_OVERLAY} backdrop-blur-[2px]`} />
-          <div className="relative z-10">
-            <ScheduleTable items={SUMMER_SCHEDULE} />
-            <div className="mt-6 text-center">
-              <p className="text-[#b2dbd7] text-sm sm:text-base font-semibold">
-                The <strong className="text-white">10:10 AM session</strong> on Saturdays &amp; Sundays is open to{" "}
-                <strong className="text-white">all ages</strong> — skaters of any skill level are welcome!
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Registration / Contact */}
-      <section className={`${PAGE_BG} py-8 pb-10`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8">
-          <h2 className="text-[1.5625rem] sm:text-[2.2625rem] mb-0 sm:mb-5 text-white text-center">
-            Summer 2026 Registration
-          </h2>
-          <div className="my-5 h-px w-full bg-gradient-to-r from-transparent via-[#b2dbd7]/50 to-transparent" />
-
-          <div className="w-[90%] sm:w-full max-w-3xl mx-auto my-8">
-            <div className={`relative overflow-hidden rounded-lg border border-white/20 p-6 sm:p-8 text-center ${SHADOW}`}>
-              <div className={`absolute inset-0 ${CARD_OVERLAY} backdrop-blur-[2px]`} />
-              <div className="relative z-10">
-                <h3 className="text-white text-[1.35rem] sm:text-[1.65rem] mb-2 -mt-[10px]">
-                  Register Today!
-                </h3>
-
-                <p className="text-white leading-relaxed">
-                  Use the QR code or click the link below to register for Summer Learn
-                  to Skate.
-                </p>
-
-                <img
-                  src={summerQrCode}
-                  alt="Registration QR Code"
-                  className="mx-auto mt-5 w-[120px] sm:w-[160px] h-auto rounded-md bg-white p-2"
-                />
-
-                <a
-                  href={SUMMER_LTS_REG_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-6 inline-block font-bold underline underline-offset-4 text-blue-600 hover:text-blue-700 transition text-lg md:text-3xl lg:text-3xl xl:text-4xl"
-                >
-                  Click Here to Register
-                </a>
-
-                <div className="my-6 h-px w-full bg-white/25" />
-
-                <h3 className="text-white text-[1.35rem] sm:text-[1.65rem] mb-3">
-                  Questions?
-                </h3>
-
-                <p className="text-white">
-                  Email:{" "}
                   <a
-                    href="mailto:jwanderlingh@wingsarena.com"
-                    className="font-semibold underline underline-offset-2 hover:text-gray-300 transition"
+                    href={PRESCHOOL_LTS_REG_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 inline-block font-bold underline underline-offset-4 text-blue-600 hover:text-blue-700 transition text-base sm:text-xl lg:text-2xl"
                   >
-                    jwanderlingh@wingsarena.com
+                    Click Here to Register
                   </a>
-                </p>
 
-                <div className="mt-4 text-white space-y-1">
-                  <p className="font-semibold text-white">Wings Arena</p>
-                  <p>5 Barry Place • Stamford, CT 06902</p>
-                  <p>(203) 357-1055</p>
+                  <div className="my-4 h-px w-full bg-white/25" />
+
+                  <h3 className="text-white text-[1.05rem] sm:text-[1.2rem] mb-2">
+                    Questions?
+                  </h3>
+
+                  <p className="text-white text-sm">
+                    Email:{" "}
+                    <a
+                      href="mailto:jwanderlingh@wingsarena.com"
+                      className="font-semibold underline underline-offset-2 hover:text-gray-300 transition"
+                    >
+                      jwanderlingh@wingsarena.com
+                    </a>
+                  </p>
+
+                  <div className="mt-3 text-white text-sm space-y-1">
+                    <p className="font-semibold text-white">Wings Arena</p>
+                    <p>5 Barry Place • Stamford, CT 06902</p>
+                    <p>(203) 357-1055</p>
+                  </div>
                 </div>
-
-                <div className="mt-6" />
               </div>
             </div>
           </div>
@@ -655,17 +555,23 @@ export default function App() {
           <h2 className="text-2xl sm:text-3xl mb-4 sm:mb-6 text-white text-center">
             Frequently Asked Questions
           </h2>
+
           <div className="my-4 h-px w-full bg-gradient-to-r from-transparent via-[#b2dbd7]/50 to-transparent" />
 
           <div className={`relative overflow-hidden rounded-lg border border-white/20 ${SHADOW}`}>
             <div className={`absolute inset-0 ${CARD_OVERLAY} backdrop-blur-[2px]`} />
 
             <div className="relative z-10">
-              <Accordion type="single" collapsible className="bg-transparent px-4 sm:px-6">
+              <Accordion
+                type="single"
+                collapsible
+                className="bg-transparent px-4 sm:px-6"
+              >
                 <AccordionItem value="item-1">
                   <AccordionTrigger className="text-white">
                     Who is Learn to Skate for?
                   </AccordionTrigger>
+
                   <AccordionContent className="text-white">
                     It’s designed for beginner skaters (kids ages 3–10) and focuses on
                     building confidence through step-by-step instruction and fun games.
@@ -676,6 +582,7 @@ export default function App() {
                   <AccordionTrigger className="text-white">
                     What equipment is required?
                   </AccordionTrigger>
+
                   <AccordionContent className="text-white">
                     Skates, helmet & mittens/gloves are required. Rental skates are available.
                   </AccordionContent>
@@ -685,9 +592,10 @@ export default function App() {
                   <AccordionTrigger className="text-white">
                     When are classes?
                   </AccordionTrigger>
+
                   <AccordionContent className="text-white">
-                    Summer Learn to Skate runs June 27 – August 30, 2026 with options on
-                    Saturdays or Sundays. See the Schedule section above for
+                    Fall Learn to Skate runs September 8 – November 13, 2026 with options on
+                    Tuesdays or Fridays. See the Schedule section above for
                     exact dates and times.
                   </AccordionContent>
                 </AccordionItem>
@@ -696,9 +604,10 @@ export default function App() {
                   <AccordionTrigger className="text-white">
                     How much does it cost?
                   </AccordionTrigger>
+
                   <AccordionContent className="text-white">
-                    One day (Saturdays or Sundays) is $250 for the full package. Both days
-                    is $375. Drop-ins are welcome at $35 per session — no commitment required.
+                    One class per week is $350 for the 10-week session. Two classes per week
+                    is $525. Drop-ins are welcome at $40 per session — no commitment required.
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>

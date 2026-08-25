@@ -118,7 +118,46 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* =========================================================
+   WIX RESPONSIVE AUTO-HEIGHT EMBED
+   ========================================================= */
+
+html,
+body,
+#root {
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  height: auto;
+
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  min-width: 320px;
+  overflow-x: hidden;
+}
+
+html {
+  background: #305774;
+}
+
+body {
+  display: block;
+  background: #305774;
+}
+
+#root {
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  height: auto;
 }
