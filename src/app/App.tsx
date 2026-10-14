@@ -29,6 +29,7 @@ export default function App() {
   // ✅ Colors (kept from your design)
   const PAGE_BG = "bg-[#305774]";
   const CARD_OVERLAY = "bg-[#00335e]/85";
+  const WINTER_BG = "bg-[#4b3d74]";
 
   // ✅ LINKS (from the site)
   const FALL_LTS_REG_URL =
@@ -36,6 +37,49 @@ export default function App() {
 
   const PRESCHOOL_LTS_REG_URL =
     "https://tms.ezfacility.com/OnlineRegistrations/Register.aspx?CompanyID=8390&GroupID=4104307";
+
+  const WINTER_LTS_REG_URL =
+    "https://tms.ezfacility.com/OnlineRegistrations/Register.aspx?CompanyID=8390&GroupID=4129085#SelectRegistrationType";
+
+  const WINTER_PRESCHOOL_LTS_REG_URL =
+    "https://tms.ezfacility.com/OnlineRegistrations/Register.aspx?CompanyID=8390&GroupID=4129499";
+
+  // Winter 2026–27 — Sundays: Dec 6 through Feb 21, 12 weeks
+  const WINTER_SUNDAY_DATES = [
+    "Dec 6, 2026",
+    "Dec 13, 2026",
+    "Dec 20, 2026",
+    "Dec 27, 2026",
+    "Jan 3, 2027",
+    "Jan 10, 2027",
+    "Jan 17, 2027",
+    "Jan 24, 2027",
+    "Jan 31, 2027",
+    "Feb 7, 2027",
+    "Feb 14, 2027",
+    "Feb 21, 2027",
+  ];
+
+  // Winter 2026–27 — Thursdays (Preschoolers): Dec 3 through Feb 4, 10 weeks
+  const WINTER_THURSDAY_DATES = [
+    "Dec 3, 2026",
+    "Dec 10, 2026",
+    "Dec 17, 2026",
+    "Dec 24, 2026",
+    "Dec 31, 2026",
+    "Jan 7, 2027",
+    "Jan 14, 2027",
+    "Jan 21, 2027",
+    "Jan 28, 2027",
+    "Feb 4, 2027",
+  ];
+
+  const WINTER_SCHEDULE = [
+    { label: "Sundays", time: "1:30 PM – 2:00 PM", dates: WINTER_SUNDAY_DATES },
+    { label: "Sundays", time: "2:00 PM – 2:30 PM", dates: WINTER_SUNDAY_DATES },
+    { label: "Thursdays (Preschoolers)", time: "1:45 PM – 2:15 PM", dates: WINTER_THURSDAY_DATES },
+    { label: "Thursdays (Preschoolers)", time: "2:15 PM – 2:45 PM", dates: WINTER_THURSDAY_DATES },
+  ];
 
   // Fall 2026 schedule — Sep 8 through Nov 13, 10 weeks
   const FALL_SCHEDULE = [
@@ -214,7 +258,7 @@ export default function App() {
                 {/* ✅ FIX: center the CTA on mobile, keep same on desktop */}
                 <div className="pt-2 flex flex-col sm:flex-row justify-center gap-3">
                   <a
-                    href={FALL_LTS_REG_URL}
+                    href={WINTER_LTS_REG_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`
@@ -229,11 +273,11 @@ export default function App() {
                       w-full max-w-[360px] sm:w-auto
                     `}
                   >
-                    Register for Fall Learn to Skate
+                    Register for Winter Learn to Skate
                   </a>
 
                   <a
-                    href={PRESCHOOL_LTS_REG_URL}
+                    href={WINTER_PRESCHOOL_LTS_REG_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`
@@ -248,7 +292,7 @@ export default function App() {
                       w-full max-w-[360px] sm:w-auto
                     `}
                   >
-                    Register for Preschooler Learn to Skate
+                    Register Your Preschooler for Winter
                   </a>
                 </div>
               </div>
@@ -314,7 +358,7 @@ export default function App() {
                 <InfoBox
                   iconImage={calendarIcon}
                   title="Class Options"
-                  description="Saturdays or Sundays"
+                  description="Tues. Thurs. Fri. (Fall) | Sundays. Thurs (WInter)"
                   iconSize="w-[40px] h-[40px]"
                   iconOffset="-mt-[6px]"
                   textOffset="-mt-[3.5px]"
@@ -352,6 +396,216 @@ export default function App() {
           </div>
         </div>
       </section>
+
+      <div className={WINTER_BG}>
+        {/* Winter 2026–27 Section */}
+        <section className="py-10 pt-4">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8">
+            <div className="my-5 h-px w-full bg-gradient-to-r from-transparent via-[#b2dbd7]/50 to-transparent" />
+
+            <div className="flex flex-col items-center gap-3 mb-2">
+              <h2 className="text-[1.7rem] sm:text-[2.15625rem] text-white text-center">
+                Winter 2026–27 Learn to Skate
+              </h2>
+
+              <p className="text-[#b2dbd7] font-bold tracking-wide text-center">
+                December 3rd – February 21st
+              </p>
+            </div>
+
+            <div className="my-5 h-px w-full bg-gradient-to-r from-transparent via-[#b2dbd7]/50 to-transparent" />
+
+            <div className="flex justify-center w-full">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 items-stretch gap-6 sm:gap-x-10 lg:gap-x-6 w-full max-w-6xl">
+                <div className={`h-full flex [&>*]:h-full [&>*]:w-full [&>*]:mx-0 [&>*]:${SHADOW}`}>
+                  <PriceCard
+                    title="30 Min Class"
+                    price="$425"
+                    description="One 30-min session per week"
+                    features={[
+                      "Sunday 1:30 or 2:00 PM slot",
+                      "12-week session",
+                    ]}
+                  />
+                </div>
+
+                <div className={`h-full flex [&>*]:h-full [&>*]:w-full [&>*]:mx-0 [&>*]:${SHADOW}`}>
+                  <PriceCard
+                    title="Full Hour"
+                    price="$625"
+                    description="One 60-min session per week"
+                    features={[
+                      "Sunday 1:30 – 2:30 PM",
+                      "12-week session",
+                    ]}
+                  />
+                </div>
+
+                <div className={`h-full flex [&>*]:h-full [&>*]:w-full [&>*]:mx-0 [&>*]:${SHADOW}`}>
+                  <PriceCard
+                    title="Preschool"
+                    price="$360"
+                    description="One 30-min session per week"
+                    features={[
+                      "Thursday 1:45 or 2:15 PM slot",
+                      "10-week session",
+                    ]}
+                  />
+                </div>
+
+                <div className={`h-full flex [&>*]:h-full [&>*]:w-full [&>*]:mx-0 [&>*]:${SHADOW}`}>
+                  <PriceCard
+                    title="Drop-in"
+                    price="$45"
+                    description="Per session"
+                    features={["No commitment required", "Pay as you go"]}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Winter Schedule */}
+        <section className="pt-2 pb-0">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8">
+            <h2 className="text-[1.5625rem] sm:text-[2.2625rem] mb-0 sm:mb-5 text-white text-center">
+              Winter 2026–27 Schedule
+            </h2>
+
+            <div className="my-5 h-px w-full bg-gradient-to-r from-transparent via-[#b2dbd7]/50 to-transparent" />
+          </div>
+        </section>
+
+        <div className="w-[92%] sm:w-full max-w-6xl mx-auto my-8 mt-2">
+          <div className={`relative overflow-hidden rounded-lg border border-white/20 p-4 sm:p-8 ${SHADOW}`}>
+            <div className={`absolute inset-0 ${CARD_OVERLAY} backdrop-blur-[2px]`} />
+
+            <div className="relative z-10">
+              <ScheduleTable items={WINTER_SCHEDULE} />
+            </div>
+          </div>
+        </div>
+
+        {/* Winter Registration */}
+        <section className="py-8 pb-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 xl:px-8">
+            <h2 className="text-[1.5625rem] sm:text-[2.2625rem] mb-0 sm:mb-5 text-white text-center">
+              Winter 2026–27 Registration
+            </h2>
+
+            <div className="my-5 h-px w-full bg-gradient-to-r from-transparent via-[#b2dbd7]/50 to-transparent" />
+
+            <div className="w-[90%] sm:w-full max-w-5xl mx-auto my-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className={`relative overflow-hidden rounded-lg border border-white/20 p-4 sm:p-6 text-center ${SHADOW}`}>
+                  <div className={`absolute inset-0 ${CARD_OVERLAY} backdrop-blur-[2px]`} />
+
+                  <div className="relative z-10">
+                    <h3 className="text-white text-[1.15rem] sm:text-[1.4rem] mb-2 -mt-[6px]">
+                      Register for Winter
+                    </h3>
+
+                    <p className="text-white text-sm leading-relaxed">
+                      Use the QR code or click the link below to register for Winter Learn
+                      to Skate.
+                    </p>
+
+                    <img
+                      src={`${import.meta.env.BASE_URL}winter-qr-code.png`}
+                      alt="Winter Registration QR Code"
+                      className="mx-auto mt-4 w-[100px] sm:w-[130px] h-auto rounded-md bg-white p-2"
+                    />
+
+                    <a
+                      href={WINTER_LTS_REG_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-4 inline-block font-bold underline underline-offset-4 text-blue-600 hover:text-blue-700 transition text-base sm:text-xl lg:text-2xl"
+                    >
+                      Click Here to Register
+                    </a>
+
+                    <div className="my-4 h-px w-full bg-white/25" />
+
+                    <h3 className="text-white text-[1.05rem] sm:text-[1.2rem] mb-2">
+                      Questions?
+                    </h3>
+
+                    <p className="text-white text-sm">
+                      Email:{" "}
+                      <a
+                        href="mailto:jwanderlingh@wingsarena.com"
+                        className="font-semibold underline underline-offset-2 hover:text-gray-300 transition"
+                      >
+                        jwanderlingh@wingsarena.com
+                      </a>
+                    </p>
+
+                    <div className="mt-3 text-white text-sm space-y-1">
+                      <p className="font-semibold text-white">Wings Arena</p>
+                      <p>5 Barry Place • Stamford, CT 06902</p>
+                      <p>(203) 357-1055</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className={`relative overflow-hidden rounded-lg border border-white/20 p-4 sm:p-6 text-center ${SHADOW}`}>
+                  <div className={`absolute inset-0 ${CARD_OVERLAY} backdrop-blur-[2px]`} />
+
+                  <div className="relative z-10">
+                    <h3 className="text-white text-[1.15rem] sm:text-[1.4rem] mb-2 -mt-[6px]">
+                      Register Your Preschooler
+                    </h3>
+
+                    <p className="text-white text-sm leading-relaxed">
+                      Use the QR code or click the link below to register your Preschooler for
+                      Winter Learn to Skate.
+                    </p>
+
+                    <img
+                      src={`${import.meta.env.BASE_URL}winter-preschool-qr.png`}
+                      alt="Winter Preschooler Registration QR Code"
+                      className="mx-auto mt-4 w-[100px] sm:w-[130px] h-auto rounded-md bg-white p-2"
+                    />
+
+                    <a
+                      href={WINTER_PRESCHOOL_LTS_REG_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-4 inline-block font-bold underline underline-offset-4 text-blue-600 hover:text-blue-700 transition text-base sm:text-xl lg:text-2xl"
+                    >
+                      Click Here to Register
+                    </a>
+
+                    <div className="my-4 h-px w-full bg-white/25" />
+
+                    <h3 className="text-white text-[1.05rem] sm:text-[1.2rem] mb-2">
+                      Questions?
+                    </h3>
+
+                    <p className="text-white text-sm">
+                      Email:{" "}
+                      <a
+                        href="mailto:jwanderlingh@wingsarena.com"
+                        className="font-semibold underline underline-offset-2 hover:text-gray-300 transition"
+                      >
+                        jwanderlingh@wingsarena.com
+                      </a>
+                    </p>
+
+                    <div className="mt-3 text-white text-sm space-y-1">
+                      <p className="font-semibold text-white">Wings Arena</p>
+                      <p>5 Barry Place • Stamford, CT 06902</p>
+                      <p>(203) 357-1055</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
 
       {/* Fall 2026 Section */}
       <section className={`${PAGE_BG} py-10 pt-4`}>
