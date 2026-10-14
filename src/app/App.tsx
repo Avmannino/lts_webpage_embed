@@ -847,10 +847,19 @@ export default function App() {
                     When are classes?
                   </AccordionTrigger>
 
-                  <AccordionContent className="text-white">
-                    Fall Learn to Skate runs September 8 – November 13, 2026 with options on
-                    Tuesdays or Fridays. See the Schedule section above for
-                    exact dates and times.
+                  <AccordionContent className="text-white space-y-3">
+                    <p>
+                      Winter Learn to Skate runs on Sundays from December 6, 2026 –
+                      February 21, 2027, with classes from 1:30–2:00 PM and 2:00–2:30 PM.
+                      Preschool Learn to Skate runs on Thursdays from December 3, 2026 –
+                      February 4, 2027, with classes from 1:45–2:15 PM and 2:15–2:45 PM.
+                    </p>
+
+                    <p>
+                      Fall Learn to Skate runs September 8 – November 13, 2026 with options on
+                      Tuesdays or Fridays. See the Schedule sections above for
+                      exact dates and times.
+                    </p>
                   </AccordionContent>
                 </AccordionItem>
 
@@ -859,9 +868,19 @@ export default function App() {
                     How much does it cost?
                   </AccordionTrigger>
 
-                  <AccordionContent className="text-white">
-                    One class per week is $350 for the 10-week session. Two classes per week
-                    is $525. Drop-ins are welcome at $40 per session — no commitment required.
+                  <AccordionContent className="text-white space-y-3">
+                    <p>
+                      Winter Learn to Skate is $425 for 12 weeks of one 30-minute class per
+                      week, or $625 for a full hour (1:30–2:30 PM). Preschool Learn to Skate
+                      is $360 for the 10-week session. Drop-ins are welcome at $45 per
+                      session — no commitment required.
+                    </p>
+
+                    <p>
+                      Fall Learn to Skate: one class per week is $350 for the 10-week session.
+                      Two classes per week is $525. Drop-ins are welcome at $40 per session —
+                      no commitment required.
+                    </p>
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
